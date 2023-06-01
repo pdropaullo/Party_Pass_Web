@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Início</title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            <a href="#inicio">Party Pass</a>
+        </div>
+        <div class="menus">
+            <a href="#inicio">INÍCIO</a>
+            <a href="#main_index">FERRAMENTAS</a>
+            <a href="#sobre">SOBRE</a>
+        </div>
+        <div class="perfil">
+            <a href="#inicio"><i class="fa-solid fa-bell"></i></a>
+            <a href="#inicio"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
+        </div>
+    </nav>
+    <header id="inicio">
+        <img src="https://media.istockphoto.com/id/624494724/pt/foto/empty-wooden-bar-counter.jpg?s=612x612&w=0&k=20&c=3aZOArTwzBia7EDGy-eqoYc4IKMp9cw5tOVh2PjaOSg="
+            alt="">
+        <div class="welcome">
+            <h1>Seja Bem Vindo(a)!</h1>
+            <h1>Conheça abaixo nossas ferramentas</h1>
+            <a href="#main_index" id="down">▼</a>
+        </div>
+    </header>
+    <main class="main_index" id="main_index">
+        <h1>Nossas Ferramentas</h1>
+        <div class="ferramentas">
+            <div class="cliente">
+                <h1>Cliente</h1>
+                <a href=""><button>Cadastrar Cliente</button></a>
+                <a href=""><button>Pesquisar Cliente</button></a>
+            </div>
+            <div class="produto">
+                <h1>Produto</h1>
+                <a href=""><button>Cadastrar Produto</button></a>
+                <a href=""><button>Pesquisar Produto</button></a>
+            </div>
+            <div class="comanda">
+                <h1>Comanda</h1>
+                <a href=""><button>Recarregar Comanda</button></a>
+                <a href=""><button>Realizar Consumo</button></a>
+            </div>
+        </div>
+    </main>
+    <div class="sobre" id="sobre">
+        <div class="titulo">
+            <h1>Sobre Nós!</h1>
+            <h2>Estudantes da 4ª Fase do Curso Superior de Tecnologia em Análise e Desenvolvimentos de Sistemas na
+                Faculdade de Tecnologia Senac Palhoça</h2>
+            <h2>Party Pass foi desenvolvido durante a disciplina de Desenvolvimento Web, orientados pelo Professor
+                Wildosn Caio</h2>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <img src="https://avatars.githubusercontent.com/u/84816808?v=4" alt="">
+                <h2>Ana Flávia de Freitas Corrêa</h2>
+                <div class="personal_icons">
+                    <a href="https://www.instagram.com/anafreitascorrea/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/anaflaviafreitascorrea/"><i
+                            class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/AnaFlaviaCorrea"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://avatars.githubusercontent.com/u/105252686?v=4" alt="">
+                <h2>Natália Heinzen</h2>
+                <div class="personal_icons">
+                    <a href="https://www.instagram.com/nataliaheinzen/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/nataliahnzn/"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/natalia-hnzn"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://avatars.githubusercontent.com/u/103196282?v=4" alt="">
+                <h2>Pedro Paulo de Abreu</h2>
+                <div class="personal_icons">
+                    <a href="https://www.instagram.com/pdropaullo/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/pdropaullo/"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/pdropaullo"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://avatars.githubusercontent.com/u/92828001?v=4" alt="">
+                <h2>Thiago Ruan Costa</h2>
+                <div class="personal_icons">
+                    <a href="https://www.instagram.com/thiago.rcosta/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/thiago-ruan-costa/"><i
+                            class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Thiagor34"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="geral">
+            <div class="logo2">
+                <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            </div>
+            <div class="contato">
+                <div class="telefone">
+                    <h2>Telefone</h2>
+                    <h3>+55 (48) 91234-5678</h3>
+                </div>
+                <div class="email">
+                    <h2>Email</h2>
+                    <h3>party.pass.senac@gmail.com</h3>
+                </div>
+            </div>
+            <div class="infos">
+                <div class="sede">
+                    <h3>Rua Drink, 51, Florianópolis - SC</h3>
+                </div>
+                <div class="social">
+                    <h2>Siga-nos</h2>
+                    <div class="icons">
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://github.com/pdropaullo/Party_Pass_Web"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rodape">
+            <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
+        </div>
+    </footer>
+</body>
+
+</html>
