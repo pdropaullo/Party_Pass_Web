@@ -10,54 +10,25 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Início - Party Pass</title>
+    <title>Sobre Nós - Party Pass</title>
 </head>
 
 <body>
     <nav>
         <div class="logo">
-            <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
-            <a href="#inicio">Party Pass</a>
+            <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            <a href="{% url 'home' %}">Party Pass</a>
         </div>
         <div class="menus">
-            <a href="#inicio">INÍCIO</a>
-            <a href="#main_index">FERRAMENTAS</a>
-            <a href="#sobre">SOBRE</a>
+            <a href="{% url 'home' %}">INÍCIO</a>
+            <a href="{% url 'ferramentas' %}">FERRAMENTAS</a>
+            <a href="{% url 'sobre' %}">SOBRE</a>
         </div>
         <div class="perfil">
-            <a href="#inicio"><i class="fa-solid fa-bell"></i></a>
-            <a href="#inicio"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
+            <a href=""><i class="fa-solid fa-bell"></i></a>
+            <a href=""><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
         </div>
     </nav>
-    <header id="inicio">
-        <img src="https://media.istockphoto.com/id/624494724/pt/foto/empty-wooden-bar-counter.jpg?s=612x612&w=0&k=20&c=3aZOArTwzBia7EDGy-eqoYc4IKMp9cw5tOVh2PjaOSg="
-            alt="">
-        <div class="welcome">
-            <h1>Seja Bem Vindo(a)!</h1>
-            <h1>Conheça abaixo nossas ferramentas</h1>
-            <a href="#main_index" id="down">▼</a>
-        </div>
-    </header>
-    <main class="main_index" id="main_index">
-        <h1>Nossas Ferramentas</h1>
-        <div class="ferramentas">
-            <div class="cliente">
-                <h1>Cliente</h1>
-                <a href=""><button>Cadastrar Cliente</button></a>
-                <a href=""><button>Pesquisar Cliente</button></a>
-            </div>
-            <div class="produto">
-                <h1>Produto</h1>
-                <a href=""><button>Cadastrar Produto</button></a>
-                <a href=""><button>Pesquisar Produto</button></a>
-            </div>
-            <div class="comanda">
-                <h1>Comanda</h1>
-                <a href="{% url 'recarregar_comanda' %}"><button>Recarregar Comanda</button></a>
-                <a href="{% url 'realizar_consumo' %}"><button>Realizar Consumo</button></a>
-            </div>
-        </div>
-    </main>
     <div class="sobre" id="sobre">
         <div class="titulo">
             <h1>Sobre Nós!</h1>
@@ -110,7 +81,7 @@
     <footer>
         <div class="geral">
             <div class="logo2">
-                <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
             </div>
             <div class="contato">
                 <div class="telefone">
