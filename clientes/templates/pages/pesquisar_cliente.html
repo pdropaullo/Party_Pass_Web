@@ -16,18 +16,10 @@
 
 <body>
    
-    <div class="card">
-        <h1>Cadastrar Cliente </h1>
-        <form method="POST" enctype="multipart/form-data" action="">
-            {% csrf_token%}
-            <input name="Nome" type="text" placeholder="Nome">
-            <input class="cpf" name="CPF" type="text" placeholder="CPF">
-            <input name="Email" type="text" placeholder="Email">
-            <input class="Telefone" name="Telefone" type="text" placeholder="Telefone">
-            <input name="Data_nascimento" type="date" placeholder="Data_nascimento">
-            <input name="Endereço" type="text" placeholder="Endereço">
-
-            <button type="submit">Cadastrar</button>
+    <div class="search_btn">
+        <form action="{% url 'search'%}">
+            <input type="text" name="search" placeholder=" Buscar cliente">
+            <button type="submit">Buscar</button>
         </form>
     </div>
     <script>
