@@ -7,7 +7,7 @@ class Produtos(models.Model):
     descricao = models.TextField()
     
     def __str__(self) -> str:
-        return self.title
+        return self.nome
     
     class Meta: 
         verbose_name_plural = 'Produtos'
