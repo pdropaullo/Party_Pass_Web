@@ -1,28 +1,26 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro do Cliente</title>
-    <link rel="stylesheet" href="{% static 'styleII.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="{% static 'jquery.mask.js'%}"></script>
-    <script defer src="{% static 'jquery.mask.min.js'%}"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="{% static 'js/jquery.mask.js'%}"></script>
+    <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pesquisar_cliente.css' %}">
+    <title>Pesquisar Cliente - Party Pass</title>
 </head>
 
 <body>
-    <h1>Pesquisar Cliente </h1>
+   
     <div class="search_btn">
-        <form action="{% url 'pesquisar_cliente'%}">
-            <input type="text" id="nome-input" name="pesquisar_cliente" placeholder="Buscar cliente por nome ou CPF">
-
-            <!-- <input type="text" name="search" placeholder=" Buscar cliente"> -->
+        <form action="{% url 'search'%}">
+            <input type="text" name="search" placeholder=" Buscar cliente">
             <button type="submit">Buscar</button>
         </form>
     </div>
@@ -59,9 +57,11 @@
         </tbody>
     </table>
     <script>
-        $(document).ready(function () {
-            $('#nome-input').inputmask({ regex: String.raw`[A-Za-zÀ-ÿ\s]*`, placeholder: '' });
-        });
+        $(document).ready(function(){
+           
+            $('.cpf').mask('000.000.000-00')
+            $('.Telefone').mask('(00) 00000-0000')
+        })
     </script>
 
 </body>
