@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="{% static 'js/jquery.mask.js'%}"></script>
+    <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Ferramentas - Party Pass</title>
+    <link rel="stylesheet" href="{% static 'css/cadastrar_cliente.css' %}">
+    <title>Cadastrar Cliente - Party Pass</title>
 </head>
 
 <body>
@@ -29,26 +32,18 @@
             <a href=""><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
         </div>
     </nav>
-    <main class="main_index" id="main_index">
-        <h1>Nossas Ferramentas</h1>
-        <div class="ferramentas">
-            <div class="cliente">
-                <h1>Cliente</h1>
-                <a href="{% url 'cadastrar_cliente' %}"><button>Cadastrar Cliente</button></a>
-                <a href="{% url 'pesquisar_cliente' %}"><button>Pesquisar Cliente</button></a>
-            </div>
-            <div class="produto">
-                <h1>Produto</h1>
-                <a href=""><button>Cadastrar Produto</button></a>
-                <a href=""><button>Pesquisar Produto</button></a>
-            </div>
-            <div class="comanda">
-                <h1>Comanda</h1>
-                <a href="{% url 'recarregar_comanda' %}"><button>Recarregar Comanda</button></a>
-                <a href="{% url 'realizar_consumo' %}"><button>Realizar Consumo</button></a>
-            </div>
-        </div>
-    </main>
+    <div class="card">
+        <h1>Cadastrar Cliente </h1>
+        <form method="POST" enctype="multipart/form-data" action=""> {% csrf_token%}
+            <input name="Nome" type="text" placeholder="Nome">
+            <input class="cpf" name="CPF" type="text" placeholder="CPF">
+            <input name="Email" type="text" placeholder="Email">
+            <input class="Telefone" name="Telefone" type="text" placeholder="Telefone">
+            <input name="Data_nascimento" type="date" placeholder="Data_nascimento">
+            <input name="Endereço" type="text" placeholder="Endereço">
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
     <footer>
         <div class="geral">
             <div class="logo2">
@@ -85,6 +80,12 @@
             <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
         </div>
     </footer>
+    <script>
+        $(document).ready(function () {
+            $('.cpf').mask('000.000.000-00')
+            $('.Telefone').mask('(00) 00000-0000')
+        })
+    </script>
 </body>
 
 </html>
