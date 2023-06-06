@@ -13,8 +13,23 @@ def cadastrar_produtos(request):
         return redirect('home')
     
     else:
-        return render(request, 'pages/cadastrar_produtos.html')
-    
+        return render(request, 'pages/cadastrar_produtos.html')    
+
 
 def pesquisar_produtos(request):
-    return render(request, 'pages/pesquisar_produtos.html')
+    produtos = Produtos.objects.filter().order_by('-id')   
+    return render(request, 'pages/pesquisar_produtos.html', {'produtos':produtos})
+
+def search(request): 
+    filtro = request.GET.get('filtro', 'codigo')  # Obtém o valor do filtro selecionado ou define 'codigo' como padrão
+    q = request.GET.get('search', '')
+
+    if filtro == 'codigo':
+        produtos = Produtos.objects.filter(id__icontains=q).order_by('-id')
+    elif filtro == 'nome':
+        produtos = Produtos.objects.filter(nome__icontains=q).order_by('-id')
+    elif filtro == 'categoria':
+        produtos = Produtos.objects.filter(categoria__icontains=q).order_by('-id')
+    
+    return render(request, 'pages/pesquisar_produtos.html', {'produtos': produtos})
+

@@ -19,9 +19,14 @@
             <h1>Pesquisar Produtos</h1>
         </div>
     </div>
-    <form action="{% url 'pesquisar_produtos' %}">
-        <input type="text" name="search" placeholder="Buscar contato">
-        <button type="submit">Buscar</button>
+    <form action="{% url 'busca' %}">
+        <input type="text" name="search" placeholder="Pesquisar..." value="{{ search }}">
+         <button type="submit">Filtrar</button>
+        <div class="radio">
+            <input type="radio" name="filtro" value="nome" checked {% if filtro == 'nome' %}checked{% endif %}> Nome<br>
+            <input type="radio" name="filtro" value="categoria" {% if filtro == 'categoria' %}checked{% endif %}> Categoria<br>
+            <input type="radio" name="filtro" value="codigo" {% if filtro == 'codigo' %}checked{% endif %}> Código<br>          
+        </div>      
     </form>
     <div class="add-btn">
         <div class="filter-btn">
@@ -38,17 +43,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for contato in contatos %}
+            {% for produto in produtos %}
             <tr>
-                <td>{{contato.id}}</td>
-                <td><a href="{% url 'detalhes' contato.id %}">{{contato.nome}}</a></td>
-                <td>{{contato.email}}</td>
-                <td>{{contato.cpf}}</td>
-                {% if contato.ativo == True %}
-                <td><i id="check" class="fa-solid fa-circle-check"></i></td>
-                {% else %}
-                <td><i id="x" class="fa-solid fa-circle-xmark"></i></td>
-                {% endif %}
+                <td>{{produto.id}}</td>
+                <td><a href="#">{{produto.nome}}</a></td>
+                <td>{{produto.valor}}</td>
+                <td>{{produto.categoria}}</td>
+                <td>{{produto.descricao}}</td>
             </tr>
             {% endfor %}
         </tbody>
