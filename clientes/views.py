@@ -31,11 +31,22 @@ def cadastrar_cliente(request):
     
 def pesquisar_cliente(request):
     busca = request.GET.get("pesquisar_cliente")
+    clientes = None
+
     if busca:
         clientes = Clientes.objects.filter(Q(nome__icontains=busca) | Q(cpf__icontains=busca))
-    else:
-        clientes = Clientes.objects.all()
+
     return render(request, "pages/pesquisar_cliente.html", {"clientes": clientes})
+
+    
+    
+# def pesquisar_cliente(request):
+#     busca = request.GET.get("pesquisar_cliente")
+#     if busca:
+#         clientes = Clientes.objects.filter(Q(nome__icontains=busca) | Q(cpf__icontains=busca))
+#     else:
+#         clientes = Clientes.objects.all()
+#     return render(request, "pages/pesquisar_cliente.html", {"clientes": clientes})
 
     
 

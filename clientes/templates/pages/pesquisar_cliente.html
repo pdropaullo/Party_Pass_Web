@@ -11,16 +11,18 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="{% static 'js/jquery.mask.js'%}"></script>
     <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/pesquisar_cliente.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <title>Pesquisar Cliente - Party Pass</title>
 </head>
 
 <body>
    
     <div class="search_btn">
-        <form action="{% url 'search'%}">
-            <input type="text" name="search" placeholder=" Buscar cliente">
+        <form action="{% url 'pesquisar_cliente'%}">
+            <input type="text" name="pesquisar_cliente" placeholder=" Buscar cliente">
             <button type="submit">Buscar</button>
         </form>
     </div>
