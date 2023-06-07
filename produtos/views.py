@@ -33,3 +33,31 @@ def search(request):
     
     return render(request, 'pages/pesquisar_produtos.html', {'produtos': produtos})
 
+def detalhes(request, id):
+    produto = get_object_or_404(Produtos, id=id)
+    print(produto)
+    return render(request, 'pages/detalhes_produtos.html', {'produto':produto})
+
+def editar(request, id):
+    produto = Produtos.objects.get(id=id)    
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        valor = request.POST.get('valor').replace(",", ".")
+        categoria = request.POST.get('categoria')
+        descricao = request.POST.get('descricao')
+        
+        produto.nome = nome
+        produto.valor = valor
+        produto.categoria = categoria
+        produto.descricao = descricao
+
+        produto.save()               
+        return redirect('home')
+       
+    else:            
+        return render(request, 'pages/editar_produtos.html', {'produto':produto})
+    
+def deletar(request, id):
+    produto = Produtos.objects.get(id=id)
+    produto.delete()
+    return redirect('home')  

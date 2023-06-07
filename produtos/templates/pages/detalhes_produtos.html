@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/editar_produto.css'%}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Detalhes do Produto</h1>
+    <form method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
+        <input name="nome" value="{{produto.nome}}" type="text" readonly class="readonly-input">
+        <input name="valor" value="{{produto.valor}}" type="text" readonly class="readonly-input">
+        <input name="categoria" value="{{produto.categoria}}" type="text" readonly class="readonly-input">
+        <input name="descricao" value="{{produto.descricao}}" type="text" readonly class="readonly-input">
+        <div class="buttons">
+            <a href="{% url 'deletar' produto.id %}" class="del">Excluir</a>
+            <a href="{% url 'editar' produto.id %}" class="alt">Alterar</a>
+        </div>
+    </form>
+
+</body>
+</html>
