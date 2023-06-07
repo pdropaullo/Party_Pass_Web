@@ -38,6 +38,7 @@
         <form method="POST" enctype="multipart/form-data" action=""> {% csrf_token%}
             <input name="Nome" type="text" placeholder="Nome">
             <input class="cpf" name="CPF" type="text" placeholder="CPF">
+            <input class="saldo" name="Saldo" type="number" placeholder="Saldo">
             <input name="Email" type="text" placeholder="Email">
             <input class="Telefone" name="Telefone" type="text" placeholder="Telefone">
             <input name="Data_nascimento" type="date" placeholder="Data_nascimento">
@@ -84,6 +85,7 @@
     <script>
         $(document).ready(function () {
             $('.cpf').mask('000.000.000-00')
+            $('.saldo').maskMoney({ thousands: '.', decimal: ',', allowZero: true });
             $('.Telefone').mask('(00) 00000-0000')
         })
     </script>

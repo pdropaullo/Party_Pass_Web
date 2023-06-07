@@ -13,6 +13,11 @@ def cadastrar_cliente(request):
         email = request.POST.get("Email")
         data_nascimento = request.POST.get("Data_nascimento")
         endereco = request.POST.get("Endereço")
+        saldo = request.POST.get("Saldo")
+        if saldo:
+            saldo = float(saldo)  
+        else:
+            saldo = 0.00  
 
         novo_cliente = Clientes(
             nome=nome,
@@ -21,6 +26,7 @@ def cadastrar_cliente(request):
             email=email,
             data_nascimento=data_nascimento,
             endereco=endereco,
+            saldo=saldo
         )
         novo_cliente.save()
         
