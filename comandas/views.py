@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Comandas
-from .models import Clientes
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from clientes.models import Clientes
 
 def index(request):
     comandas = Comandas.objects.all()
@@ -25,11 +24,14 @@ def sobre(request):
     comandas = Comandas.objects.all()
     return render(request, 'pages/sobre.html', {'comandas': comandas})
 
-def pesquisar_cliente(request):
-    clientes = Clientes.objects.filter().order_by('-id')   
-    return render(request, 'pages/recarregar_comanda.html', {'clientes':clientes})
-
 def search(request): 
-    cliente_id = request.GET.get('search')
-    clientes = get_object_or_404(Clientes, id=cliente_id)
-    return render(request, 'pages/recarregar_comanda.html', {'clientes':clientes})
+    q = request.GET.get('search', '')
+    comandas = Comandas.objects.filter(id__icontains=q).order_by('-id')
+    
+    return render(request, 'pages/recarregar_comanda.html', {'comandas': comandas})
+
+def search_id(request): 
+    q = request.GET.get('search', '')
+    cliente_id = Clientes.objects.filter(id__icontains=q)
+    
+    return render(request, 'pages/recarregar_comanda.html', {'cliente_id': cliente_id})

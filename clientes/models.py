@@ -8,7 +8,6 @@ class Clientes(models.Model):
     data_nascimento = models.DateField()
     endereco = models.TextField()
     email = models.EmailField()
-    saldo = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     
 
     def __str__(self):

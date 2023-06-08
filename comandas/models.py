@@ -1,24 +1,18 @@
 from distutils.command.upload import upload
 from pyexpat import model
+from clientes.models import Clientes
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
+
 
 class Comandas(models.Model):
     cliente = models.ForeignKey('clientes.Clientes', on_delete=models.CASCADE)
     saldo = models.DecimalField(max_digits=6, decimal_places=2)
+    ultima_recarga = models.DateField(default=date.today)
 
     def __str__(self):
-        return self.saldo
-
-    class Meta:
-        verbose_name_plural = 'Comandas'
-
-
-class Clientes(models.Model):    
-    nome = models.CharField(max_length=255)
-    
-    def __str__(self):
-        return self.nome
+        return str(self.saldo)
 
     class Meta:
         verbose_name_plural = 'Comandas'

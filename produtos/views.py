@@ -33,7 +33,7 @@ def search(request):
     
     return render(request, 'pages/pesquisar_produtos.html', {'produtos': produtos})
 
-def detalhes(request, id):
+def detalhes(request, id): 
     produto = get_object_or_404(Produtos, id=id)
     print(produto)
     return render(request, 'pages/detalhes_produtos.html', {'produto':produto})

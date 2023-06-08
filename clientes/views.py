@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.db.models import Q
 from .models import Clientes
+from comandas.models import Comandas
+from datetime import date
 
 
 def cadastrar_cliente(request):
@@ -25,10 +27,17 @@ def cadastrar_cliente(request):
             telefone=telefone,
             email=email,
             data_nascimento=data_nascimento,
-            endereco=endereco,
-            saldo=saldo
+            endereco=endereco
         )
+                
+        nova_comanda = Comandas(
+            cliente=novo_cliente,
+            ultima_recarga=date.today(),
+            saldo=saldo            
+        )
+        
         novo_cliente.save()
+        nova_comanda.save()
         
         return redirect("home")
     else:
@@ -43,16 +52,7 @@ def pesquisar_cliente(request):
         clientes = Clientes.objects.filter(Q(nome__icontains=busca) | Q(cpf__icontains=busca))
 
     return render(request, "pages/pesquisar_cliente.html", {"clientes": clientes})
-
     
-    
-# def pesquisar_cliente(request):
-#     busca = request.GET.get("pesquisar_cliente")
-#     if busca:
-#         clientes = Clientes.objects.filter(Q(nome__icontains=busca) | Q(cpf__icontains=busca))
-#     else:
-#         clientes = Clientes.objects.all()
-#     return render(request, "pages/pesquisar_cliente.html", {"clientes": clientes})
 
     
 
