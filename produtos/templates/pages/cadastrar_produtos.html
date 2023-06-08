@@ -6,28 +6,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="{% static '.css'%}"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="{% static 'js/jquery.mask.js' %}"></script>
     <script defer src="{% static 'js/jquery.mask.min.js' %}"></script>
     <script defer src="{% static 'js/mask.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cadastrar_produtos.css' %}">
+    <title>Cadastrar Produtos - Party Pass</title>
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="titulo">
-            <h1>Cadastro de Produtos</h1>
-    </div>
-    <form method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
-        <input name="nome" value="{{produto.nome}}" type="text" placeholder="Nome do Produto">
-        <input class="valor" name="valor" value="{{produto.valor}}" type="text" placeholder="Valor">
-        <input name="categoria" value="{{produto.categoria}}" type="text" placeholder="Categoria">
-        <input name="descricao" value="{{produto.descricao}}" type="textarea" placeholder="Descrição">
-        <button type="submit">Adicionar</button>
-    </form>
+
+    <nav>
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            <a href="{% url 'home' %}">Party Pass</a>
+        </div>
+        <div class="menus">
+            <a href="{% url 'home' %}">INÍCIO</a>
+            <a href="{% url 'ferramentas' %}">FERRAMENTAS</a>
+            <a href="{% url 'sobre' %}">SOBRE</a>
+        </div>
+        <div class="perfil">
+            <a href="#"><i class="fa-solid fa-bell"></i></a>
+            <a href="#"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
+        </div>
+    </nav>
+    <main>
+        <div class="itens">
+            <div class="cadastrar_produto">
+                <h1>Cadastrar Produto</h1>
+            </div>
+            <form class="infos_produto" method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
+                <div class="nome_produto">
+                    <h2>Nome do Produto:</h2>
+                    <input name="nome" value="{{produto.nome}}" type="text" placeholder="Nome do Produto">
+                </div>
+                <div class="valor_produto">
+                    <h2>Valor do Produto:</h2>
+                    <input class="valor" name="valor" value="{{produto.valor}}" type="text" placeholder="Valor">
+                </div>
+                <div class="categoria_produto">
+                    <h2>Categoria do Produto:</h2>
+                    <input name="categoria" value="{{produto.categoria}}" type="text" placeholder="Categoria">
+                </div>
+                <div class="descricao_produto">
+                    <h2>Descrição do Produto:</h2>
+                    <input name="descricao" value="{{produto.descricao}}" type="textarea" placeholder="Descrição">
+                </div>
+                <div class="buttons">
+                    <button type="submit">Adicionar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="geral">
+            <div class="logo2">
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            </div>
+            <div class="contato">
+                <div class="telefone">
+                    <h2>Telefone</h2>
+                    <h3>+55 (48) 91234-5678</h3>
+                </div>
+                <div class="email">
+                    <h2>Email</h2>
+                    <h3><a href="mailto:party.pass.senac@gmail.com">party.pass.senac@gmail.com</a></h3>
+                </div>
+            </div>
+            <div class="infos">
+                <div class="sede">
+                    <h3>Rua Drink, 51, Florianópolis - SC</h3>
+                </div>
+                <div class="social">
+                    <h2>Siga-nos</h2>
+                    <div class="icons">
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://github.com/pdropaullo/Party_Pass_Web"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rodape">
+            <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
+        </div>
+    </footer>
 </body>
 
 </html>
