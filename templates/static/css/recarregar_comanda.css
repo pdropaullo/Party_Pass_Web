@@ -80,11 +80,12 @@ select {
 
 .buttons {
     display: flex;
-    width: 80%;
+    width: 100%;
     justify-content: space-evenly;
+    padding-top: 20px;
 }
 
-.buttons>button {
+button {
     display: flex;
     width: 100px;
     height: 30px;
@@ -98,4 +99,10 @@ select {
 button:hover {
     cursor: pointer;
     color: yellow;
+}
+
+.pesquisar_comanda{
+    width: 500px;
+    display: flex;
+    justify-content: space-evenly;
 }

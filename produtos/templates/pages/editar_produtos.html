@@ -13,7 +13,7 @@
     <script defer src="{% static 'js/jquery.mask.min.js' %}"></script>
     <script defer src="{% static 'js/mask.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/editar_produtos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/produtos.css' %}">
     <title>Editar Produtos - Party Pass</title>
 </head>
 
@@ -35,7 +35,7 @@
     </nav>
     <main>
         <div class="itens">
-            <div class="editar_produto">
+            <div class="titulo_ferramenta">
                 <h1>Editar Produto</h1>
             </div>
             <form class="infos_produto" method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}

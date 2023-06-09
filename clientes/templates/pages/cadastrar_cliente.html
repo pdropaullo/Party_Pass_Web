@@ -11,9 +11,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="{% static 'js/jquery.mask.js'%}"></script>
     <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cadastrar_cliente.css' %}">
+    <link rel="stylesheet" href="{% static 'css/clientes.css' %}">
     <title>Cadastrar Cliente - Party Pass</title>
 </head>
 
@@ -29,23 +29,51 @@
             <a href="{% url 'sobre' %}">SOBRE</a>
         </div>
         <div class="perfil">
-            <a href=""><i class="fa-solid fa-bell"></i></a>
-            <a href=""><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
+            <a href="#"><i class="fa-solid fa-bell"></i></a>
+            <a href="#"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
         </div>
     </nav>
-    <div class="card">
-        <h1>Cadastrar Cliente </h1>
-        <form method="POST" enctype="multipart/form-data" action=""> {% csrf_token%}
-            <input name="Nome" type="text" placeholder="Nome">
-            <input class="cpf" name="CPF" type="text" placeholder="CPF">
-            <input class="saldo" name="Saldo" type="number" placeholder="Saldo">
-            <input name="Email" type="text" placeholder="Email">
-            <input class="Telefone" name="Telefone" type="text" placeholder="Telefone">
-            <input name="Data_nascimento" type="date" placeholder="Data_nascimento">
-            <input name="Endereço" type="text" placeholder="Endereço">
-            <button type="submit">Cadastrar</button>
-        </form>
-    </div>
+    <main>
+        <div class="itens">
+            <div class="titulo_ferramenta">
+                <h1>Cadastrar Cliente</h1>
+            </div>
+            <form class="infos_cliente" method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
+                <div class="nome_cliente">
+                    <h2>Nome:</h2>
+                    <input name="Nome" type="text" placeholder="Nome">
+                </div>
+                <div class="cpf_cliente">
+                    <h2>CPF:</h2>
+                    <input class="cpf" name="CPF" type="text" placeholder="CPF">
+                </div>
+                <div class="saldo_cliente">
+                    <h2>Saldo:</h2>
+                    <input class="saldo" name="Saldo" type="number" placeholder="Saldo">
+                </div>
+                <div class="email_cliente">
+                    <h2>Email:</h2>
+                    <input name="Email" type="text" placeholder="Email">
+                </div>
+                <div class="telefone_cliente">
+                    <h2>Telefone:</h2>
+                    <input class="Telefone" name="Telefone" type="text" placeholder="Telefone">
+                </div>
+                <div class="dt_nasc_cliente">
+                    <h2>Data de Nascimento:</h2>
+                    <input name="Data_nascimento" type="date" placeholder="Data_nascimento">
+                </div>
+                <div class="endereco_cliente">
+                    <h2>Endereço:</h2>
+                    <input name="Endereço" type="text" placeholder="Endereço">
+                </div>
+                <div class="buttons">
+                    <button>Cancelar</button>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </main>
     <footer>
         <div class="geral">
             <div class="logo2">
@@ -58,7 +86,7 @@
                 </div>
                 <div class="email">
                     <h2>Email</h2>
-                    <h3>party.pass.senac@gmail.com</h3>
+                    <h3><a href="mailto:party.pass.senac@gmail.com">party.pass.senac@gmail.com</a></h3>
                 </div>
             </div>
             <div class="infos">

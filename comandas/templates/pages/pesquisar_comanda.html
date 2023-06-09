@@ -9,12 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script defer src="{% static 'js/jquery.mask.js'%}"></script>
-    <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
-    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pesquisar_cliente.css' %}">
-    <title>Pesquisar Cliente - Party Pass</title>
+    <link rel="stylesheet" href="{% static 'css/recarregar_comanda.css' %}">
+    <title>Pesquisar Comanda - Party Pass</title>
 </head>
 
 <body>
@@ -33,51 +30,15 @@
             <a href="#"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
         </div>
     </nav>
-    <main class="pesquisa">
+    <main class="recarregar">
         <div class="itens">
-            <div class="pesquisar">
-                <h1>Pesquisar Clientes</h1>
-            </div>
-            <form class="inputs" action="{% url 'pesquisar_cliente'%}">
-                <input id="pesquisa" type="text" name="pesquisar_cliente" placeholder="Nome ou CPF...">
-                <button type="submit">Buscar</button>
-            </form>
-            <table class="tabela">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>CPF</th>
-                        <th>Saldo</th>
-                        <th>Telefone</th>
-                        <th>Data de Nascimento</th>
-                        <th>Endereço</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cliente in clientes%}
-                    <tr>
-                        <td>{{cliente.id}}</td>
-                        <td>{{cliente.nome}}</td>
-                        <td>{{cliente.email}}</td>
-                        <td>{{cliente.telefone}}</td>
-                        <td>{{cliente.saldo}}</td>
-                        <td>{{cliente.cpf}}</td>
-                        <td>{{cliente.data_nascimento}}</td>
-                        <td>{{cliente.endereco}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="pagination">
-                {% if clientes.has_previous %}
-                    <a class="paginas" href="?page={{ clientes.previous_page_number }}">◀ Anterior</a>
-                {% endif %}
-                <span class="current-page">{{ clientes.number }}</span>
-                {% if clientes.has_next %}
-                    <a class="paginas" href="?page={{ clientes.next_page_number }}">Próximo ▶</a>
-                {% endif %}
+            <div class="numero_comanda">
+                <h1>Recarregar Comanda</h1>
+                <h2>Número da Comanda</h2>
+                <form class="pesquisar_comanda" action="{% url 'busca_id' %}" method="GET">
+                    <input type="text" name="search" placeholder="Pesquisar..." value="{{ search }}">
+                    <button type="submit">Pesquisar</button>
+                </form>
             </div>
         </div>
     </main>
@@ -117,12 +78,6 @@
             <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
         </div>
     </footer>
-    <script>
-        $(document).ready(function () {
-            $('.cpf').mask('000.000.000-00')
-            $('.Telefone').mask('(00) 00000-0000')
-        })
-    </script>
 </body>
 
 </html>
