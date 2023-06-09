@@ -65,3 +65,25 @@ def recarregar_comanda(request, id):
     
     else:       
         return render(request, 'pages/recarregar_comanda.html', {'cliente': cliente, 'comanda': comanda})
+    
+def pesquisar_comanda_consumo(request):
+    return render(request, 'pages/pesquisar_comanda_consumo.html')
+    
+def search_id_consumo(request): 
+    q = request.GET.get('search')
+    cliente = None
+    comanda = None
+    if q and q.isdigit():
+        cliente = Clientes.objects.filter(id=q).first
+        comanda = Comandas.objects.filter(id=q).first
+        return redirect('realizar_consumo', id=q)
+    else:     
+        return render(request, 'pages/error.html')
+    
+def realizar_consumo(request, id):
+    cliente = get_object_or_404(Clientes, id=id)
+    comanda = Comandas.objects.filter(cliente_id=id).first()
+    return render(request, 'pages/realizar_consumo.html', {'cliente': cliente})
+
+
+

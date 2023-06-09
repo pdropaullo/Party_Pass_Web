@@ -10,8 +10,8 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/realizar_consumo.css' %}">
-    <title>Realizar Consumo - Party Pass</title>
+    <link rel="stylesheet" href="{% static 'css/recarregar_comanda.css' %}">
+    <title>Pesquisar Comanda - Party Pass</title>
 </head>
 
 <body>
@@ -30,43 +30,16 @@
             <a href=""><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
         </div>
     </nav>
-    <main class="consumo">
+    <main class="recarregar">
         <div class="itens">
-            <div class="numero_consumo">
+            <div class="numero_comanda">
                 <h1>Realizar Consumo</h1>
                 <h2>Número da Comanda</h2>
-                <p name="id">{{cliente.id}}</p>
-                <h2>Cliente:</h2>
-                <p name="nome">{{cliente.nome}}</p>
-            </div>
-            <div class="infos_consumo">
-                <div class="cliente_consumo">
-                </div>
-                <div class="codigo_produto">
-                    <h2>Código do Produto:</h2>
-                    <input type="text">
-                </div>
-                <div class="nome_produto">
-                    <h2>Nome do Produto:</h2>
-                    <input type="text">
-                </div>
-                <div class="valor_produto">
-                    <h2>Valor do Produto:</h2>
-                    <input type="text">
-                </div>
-                <div class="quantidade">
-                    <h2>Quantidade:</h2>
-                    <input type="text">
-                </div>
-                <div class="total">
-                    <h2>Total:</h2>
-                    <input type="text">
-                </div>
-            </div>
-            <div class="buttons">
-                <button>Cancelar</button>
-                <button>Confirmar</button>
-            </div>
+                <form action="{% url 'search_id_consumo' %}" method="GET">
+                    <input type="text" name="search" placeholder="Pesquisar...">
+                    <button type="submit">Pesquisar</button>
+                </form>
+            </div>            
         </div>
     </main>
     <footer>
