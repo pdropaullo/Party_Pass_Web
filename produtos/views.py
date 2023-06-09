@@ -21,7 +21,7 @@ def pesquisar_produtos(request):
     return render(request, 'pages/pesquisar_produtos.html', {'produtos':produtos})
 
 def search(request): 
-    filtro = request.GET.get('filtro', 'codigo')  # Obtém o valor do filtro selecionado ou define 'codigo' como padrão
+    filtro = request.GET.get('filtro', 'codigo') 
     q = request.GET.get('search', '')
 
     if filtro == 'codigo':
@@ -35,7 +35,6 @@ def search(request):
 
 def detalhes(request, id): 
     produto = get_object_or_404(Produtos, id=id)
-    print(produto)
     return render(request, 'pages/detalhes_produtos.html', {'produto':produto})
 
 def editar(request, id):
