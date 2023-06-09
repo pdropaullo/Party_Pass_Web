@@ -1,34 +1,74 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro do Cliente</title>
-    <link rel="stylesheet" href="{% static 'styleII.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="{% static 'jquery.mask.js'%}"></script>
-    <script defer src="{% static 'jquery.mask.min.js'%}"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="{% static 'js/jquery.mask.js'%}"></script>
+    <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/pesquisar_cliente.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>Pesquisar Cliente - Party Pass</title>
 </head>
 
 <body>
-   
+
     <div class="search_btn">
-        <form action="{% url 'search'%}">
-            <input type="text" name="search" placeholder=" Buscar cliente">
+        <form action="{% url 'pesquisar_cliente'%}">
+            <input type="text" name="pesquisar_cliente" placeholder=" Buscar cliente">
             <button type="submit">Buscar</button>
         </form>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <th>Saldo</th>
+                <th>Telefone</th>
+                <th>Data de Nascimento</th>
+                <th>Endereço</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes%}
+            <tr>
+                <td>{{cliente.id}}</td>
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.email}}</td>
+                <td>{{cliente.telefone}}</td>
+                <td>{{cliente.saldo}}</td>
+                <td>{{cliente.cpf}}</td>
+                <td>{{cliente.data_nascimento}}</td>
+                <td>{{cliente.endereco}}</td>
+
+
+
+            </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
     <script>
-        $(document).ready(function(){
-           
+        $(document).ready(function () {
             $('.cpf').mask('000.000.000-00')
             $('.Telefone').mask('(00) 00000-0000')
         })
     </script>
+
 </body>
 
 </html>
