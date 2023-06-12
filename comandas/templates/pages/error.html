@@ -1,11 +1,73 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Início - Party Pass</title>
 </head>
+
 <body>
-    <h1>ID não encontrado</h1>
+    <nav>
+        <div class="logo">
+            <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            <a href="#inicio">Party Pass</a>
+        </div>
+        <div class="menus">
+            <a href="#inicio">INÍCIO</a>
+            <a href="#main_index">FERRAMENTAS</a>
+            <a href="#sobre">SOBRE</a>
+        </div>
+        <div class="perfil">
+            <a href="#"><i class="fa-solid fa-bell"></i></a>
+            <a href="#"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
+        </div>
+    </nav>
+    <main>
+        <h1>Código não entontrado</h1>
+    </main>
+    <footer>
+        <div class="geral">
+            <div class="logo2">
+                <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            </div>
+            <div class="contato">
+                <div class="telefone">
+                    <h2>Telefone</h2>
+                    <h3>+55 (48) 91234-5678</h3>
+                </div>
+                <div class="email">
+                    <h2>Email</h2>
+                    <h3><a href="mailto:party.pass.senac@gmail.com">party.pass.senac@gmail.com</a></h3>
+                </div>
+            </div>
+            <div class="infos">
+                <div class="sede">
+                    <h3>Rua Drink, 51, Florianópolis - SC</h3>
+                </div>
+                <div class="social">
+                    <h2>Siga-nos</h2>
+                    <div class="icons">
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://github.com/pdropaullo/Party_Pass_Web"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rodape">
+            <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
+        </div>
+    </footer>
 </body>
+
 </html>

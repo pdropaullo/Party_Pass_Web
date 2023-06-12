@@ -11,6 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/realizar_consumo.css' %}">
+    <script defer src="{% static 'js/scripts.js'%}"></script>
     <title>Realizar Consumo - Party Pass</title>
 </head>
 
@@ -40,33 +41,19 @@
                 <p name="nome">{{cliente.nome}}</p>
             </div>
             <div class="infos_consumo">
-                <div class="cliente_consumo">
-                </div>
                 <div class="codigo_produto">
+                    
+                    <form action="{%  url 'busca_prod' %}" method="GET">
                     <h2>Código do Produto:</h2>
-                    <input type="text">
-                </div>
-                <div class="nome_produto">
-                    <h2>Nome do Produto:</h2>
-                    <input type="text">
-                </div>
-                <div class="valor_produto">
-                    <h2>Valor do Produto:</h2>
-                    <input type="text">
-                </div>
-                <div class="quantidade">
+                    <input type="text" class="cod_prod" name="produto_id" placeholder="Pesquisar código" value="{{ produto_id }}">
                     <h2>Quantidade:</h2>
-                    <input type="text">
+                    <input type="number" class="quantidade" value="{{ quantidade }}">
+                    <button class="btn-search" type="submit">Pesquisar</button>
+
+                </form>
                 </div>
-                <div class="total">
-                    <h2>Total:</h2>
-                    <input type="text">
                 </div>
-            </div>
-            <div class="buttons">
-                <button>Cancelar</button>
-                <button>Confirmar</button>
-            </div>
+                
         </div>
     </main>
     <footer>
