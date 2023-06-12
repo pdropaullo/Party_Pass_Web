@@ -49,14 +49,14 @@
     align-items: center;
 }
 
-.radios{
+.radios {
     display: flex;
     width: 400px;
     justify-content: space-evenly;
     font-size: 20px;
 }
 
-.radios>input{
+.radios>input {
     width: 15px;
 }
 
@@ -75,6 +75,7 @@ button {
     background-color: var(--green);
     color: white;
     font-size: 20px;
+    transition: .5s;
 }
 
 button:hover {
@@ -113,10 +114,28 @@ tbody>tr {
     cursor: pointer;
 }
 
-tbody>tr>td>a{
+tbody>tr>td>a {
     color: white;
 }
 
 tbody>tr:hover {
     background-color: var(--green);
+}
+
+.pagination {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.paginas,
+.current-page {
+    color: white;
+    background-color: var(--green);
+    padding: 10px;
+}
+
+.paginas:hover {
+    cursor: pointer;
+    color: yellow;
 }

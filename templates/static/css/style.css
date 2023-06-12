@@ -53,6 +53,7 @@ nav {
     color: white;
     font-size: 32px;
     padding: 0 10px;
+    transition: .5s;
 }
 
 .logo>a:hover,
@@ -194,6 +195,7 @@ header>img {
     font-size: 32px;
     padding-top: 10px;
     padding-right: 10px;
+    transition: .5s;
 }
 
 .personal_icons>a>i:hover {
@@ -235,6 +237,7 @@ footer {
     font-size: 32px;
     padding-top: 10px;
     padding-right: 10px;
+    transition: .5s;
 }
 
 .icons>a>i:hover {
@@ -253,6 +256,7 @@ footer {
 
 button {
     border: none;
+    transition: .5s;
 }
 
 .email>h3>a{

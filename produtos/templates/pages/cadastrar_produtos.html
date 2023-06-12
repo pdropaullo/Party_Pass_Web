@@ -13,7 +13,7 @@
     <script defer src="{% static 'js/jquery.mask.min.js' %}"></script>
     <script defer src="{% static 'js/mask.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cadastrar_produtos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/produtos.css' %}">
     <title>Cadastrar Produtos - Party Pass</title>
 </head>
 
@@ -36,7 +36,7 @@
     </nav>
     <main>
         <div class="itens">
-            <div class="cadastrar_produto">
+            <div class="titulo_ferramenta">
                 <h1>Cadastrar Produto</h1>
             </div>
             <form class="infos_produto" method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
@@ -57,6 +57,7 @@
                     <input name="descricao" value="{{produto.descricao}}" type="textarea" placeholder="Descrição">
                 </div>
                 <div class="buttons">
+                    <a class="abutton" href="{% url 'home' %}">Cancelar</a>
                     <button type="submit">Adicionar</button>
                 </div>
             </form>

@@ -61,7 +61,7 @@
                     {% for produto in produtos %}
                     <tr>
                         <td>{{produto.id}}</td>
-                        <td><a href="{% url 'detalhes' produto.id %}">{{produto.nome}}</a></td>
+                        <td><a href="{% url 'detalhes_produtos' produto.id %}">{{produto.nome}}</a></td>
                         <td>{{produto.valor}}</td>
                         <td>{{produto.categoria}}</td>
                         <td>{{produto.descricao}}</td>
@@ -69,6 +69,15 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <div class="pagination">
+                {% if produtos.has_previous %}
+                    <a class="paginas" href="?page={{ produtos.previous_page_number }}"> ◀ Anterior</a>
+                {% endif %}
+                <span class="current-page">{{ produtos.number }}</span>
+                {% if produtos.has_next %}
+                    <a class="paginas" href="?page={{ produtos.next_page_number }}">Próximo ▶</a>
+                {% endif %}
+            </div>
         </div>
     </main>
     <footer>

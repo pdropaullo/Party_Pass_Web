@@ -29,12 +29,12 @@ main{
     align-items: center;
     text-align: center;
     width: 40%;
-    height: 400px;
+    height: 500px;
     margin: auto;
     justify-content: space-evenly;
 }
 
-.editar_produto {
+.titulo_ferramenta {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,15 +42,18 @@ main{
     justify-content: space-evenly;
 }
 
-.infos_produto {
+.infos_cliente {
     display: flex;
     flex-direction: column;
 }
 
-.nome_produto,
-.valor_produto,
-.categoria_produto,
-.descricao_produto {
+.nome_cliente,
+.cpf_cliente,
+.saldo_cliente,
+.email_cliente,
+.telefone_cliente,
+.dt_nasc_cliente,
+.endereco_cliente {
     display: flex;
     justify-content: flex-end;
     padding: 10px;
@@ -79,9 +82,51 @@ input {
     background-color: var(--green);
     color: white;
     font-size: 20px;
+    transition: .5s;
+}
+
+.abutton {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--green);
+    color: white;
+    font-size: 20px;
+    transition: .5s;
 }
 
 button:hover {
     cursor: pointer;
+    color: yellow;
+}
+
+.buttons>a:hover {
+    cursor: pointer;
+    color: yellow;
+}
+
+.del {
+    background-color: red;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+}
+
+.alt {
+    background-color: green;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+}
+
+.del:hover,
+.alt:hover {
+    opacity: .8;
     color: yellow;
 }

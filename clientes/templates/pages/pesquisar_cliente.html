@@ -11,64 +11,118 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="{% static 'js/jquery.mask.js'%}"></script>
     <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
-    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/pesquisar_cliente.css' %}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <title>Pesquisar Cliente - Party Pass</title>
 </head>
 
 <body>
-
-    <div class="search_btn">
-        <form action="{% url 'pesquisar_cliente'%}">
-            <input type="text" name="pesquisar_cliente" placeholder=" Buscar cliente">
-            <button type="submit">Buscar</button>
-        </form>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>CPF</th>
-                <th>Saldo</th>
-                <th>Telefone</th>
-                <th>Data de Nascimento</th>
-                <th>Endereço</th>
-
-
-
-
-            </tr>
-        </thead>
-        <tbody>
-            {% for cliente in clientes%}
-            <tr>
-                <td>{{cliente.id}}</td>
-                <td>{{cliente.nome}}</td>
-                <td>{{cliente.email}}</td>
-                <td>{{cliente.telefone}}</td>
-                <td>{{cliente.saldo}}</td>
-                <td>{{cliente.cpf}}</td>
-                <td>{{cliente.data_nascimento}}</td>
-                <td>{{cliente.endereco}}</td>
-
-
-
-            </tr>
-            {%endfor%}
-
-        </tbody>
-    </table>
+    <nav>
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            <a href="{% url 'home' %}">Party Pass</a>
+        </div>
+        <div class="menus">
+            <a href="{% url 'home' %}">INÍCIO</a>
+            <a href="{% url 'ferramentas' %}">FERRAMENTAS</a>
+            <a href="{% url 'sobre' %}">SOBRE</a>
+        </div>
+        <div class="perfil">
+            <a href="#"><i class="fa-solid fa-bell"></i></a>
+            <a href="#"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
+        </div>
+    </nav>
+    <main class="pesquisa">
+        <div class="itens">
+            <div class="pesquisar">
+                <h1>Pesquisar Clientes</h1>
+            </div>
+            <form class="inputs" action="{% url 'pesquisar_cliente'%}">
+                <input id="pesquisa" type="text" name="pesquisar_cliente" placeholder="Nome ou CPF...">
+                <button type="submit">Buscar</button>
+            </form>
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                        <th>Saldo</th>
+                        <th>Telefone</th>
+                        <th>Data de Nascimento</th>
+                        <th>Endereço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes%}
+                    <tr>
+                        <td>{{cliente.id}}</td>
+                        <td>{{cliente.nome}}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.telefone}}</td>
+                        <td>{{cliente.saldo}}</td>
+                        <td>{{cliente.cpf}}</td>
+                        <td>{{cliente.data_nascimento}}</td>
+                        <td>{{cliente.endereco}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination">
+                {% if clientes.has_previous %}
+                    <a class="paginas" href="?page={{ clientes.previous_page_number }}">◀ Anterior</a>
+                {% endif %}
+                <span class="current-page">{{ clientes.number }}</span>
+                {% if clientes.has_next %}
+                    <a class="paginas" href="?page={{ clientes.next_page_number }}">Próximo ▶</a>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="geral">
+            <div class="logo2">
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            </div>
+            <div class="contato">
+                <div class="telefone">
+                    <h2>Telefone</h2>
+                    <h3>+55 (48) 91234-5678</h3>
+                </div>
+                <div class="email">
+                    <h2>Email</h2>
+                    <h3><a href="mailto:party.pass.senac@gmail.com">party.pass.senac@gmail.com</a></h3>
+                </div>
+            </div>
+            <div class="infos">
+                <div class="sede">
+                    <h3>Rua Drink, 51, Florianópolis - SC</h3>
+                </div>
+                <div class="social">
+                    <h2>Siga-nos</h2>
+                    <div class="icons">
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://github.com/pdropaullo/Party_Pass_Web"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rodape">
+            <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
+        </div>
+    </footer>
     <script>
         $(document).ready(function () {
             $('.cpf').mask('000.000.000-00')
             $('.Telefone').mask('(00) 00000-0000')
         })
     </script>
-
 </body>
 
 </html>

@@ -34,7 +34,7 @@ def search(request):
 def pesquisar_comanda(request):
     return render(request, 'pages/pesquisar_comanda.html')
 
-def detalhes(request, id): 
+def detalhes_comanda(request, id): 
     cliente = get_object_or_404(Clientes, id=id)
     return render(request, 'pages/recarregar_comandas.html', {'cliente': cliente})
 
