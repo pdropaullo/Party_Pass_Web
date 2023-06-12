@@ -7,6 +7,11 @@ from datetime import date
 from produtos.models import Produtos
 from django.http import JsonResponse
 
+@login_required(redirect_field_name='login')
+def index(request):
+    comandas = Comandas.objects.all(usuario_id=request.user.id).order_by('-id')   
+    return render(request, 'pages/index.html', {'comandas':comandas})
+
 def index(request):
     comandas = Comandas.objects.all()
     return render(request, 'pages/index.html', {'comandas': comandas})
