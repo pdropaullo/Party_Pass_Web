@@ -45,7 +45,6 @@
                         <h2>Saldo:</h2>
                         <input name="saldo" value="{{comanda.saldo}}" type="text" readonly>
                     </div>
-
                     <div class="valor_comanda">
                         <h2>Valor da Recarga:</h2>
                         <input type="number" name="valor_comanda">
@@ -61,7 +60,7 @@
                         </select>
                     </div>
                     <div class="buttons">
-                        <button>Cancelar</button>
+                        <button href="{% url 'ferramentas' %}">Cancelar</button>
                         <button type="submit">Confirmar</button>
                     </div>
                 </form>

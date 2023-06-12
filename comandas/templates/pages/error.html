@@ -10,42 +10,32 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/recarregar_comanda.css' %}">
-    <title>Pesquisar Comanda Recarga - Party Pass</title>
+    <title>Início - Party Pass</title>
 </head>
 
 <body>
     <nav>
         <div class="logo">
-            <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
-            <a href="{% url 'home' %}">Party Pass</a>
+            <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+            <a href="#inicio">Party Pass</a>
         </div>
         <div class="menus">
-            <a href="{% url 'home' %}">INÍCIO</a>
-            <a href="{% url 'ferramentas' %}">FERRAMENTAS</a>
-            <a href="{% url 'sobre' %}">SOBRE</a>
+            <a href="#inicio">INÍCIO</a>
+            <a href="#main_index">FERRAMENTAS</a>
+            <a href="#sobre">SOBRE</a>
         </div>
         <div class="perfil">
             <a href="#"><i class="fa-solid fa-bell"></i></a>
             <a href="#"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
         </div>
     </nav>
-    <main class="recarregar">
-        <div class="itens">
-            <div class="numero_comanda">
-                <h1>Recarregar Comanda</h1>
-                <h2>Número da Comanda</h2>
-                <form class="pesquisar_comanda" action="{% url 'busca_id' %}" method="GET">
-                    <input type="text" name="search" placeholder="Pesquisar..." value="{{ search }}">
-                    <button type="submit">Pesquisar</button>
-                </form>
-            </div>
-        </div>
+    <main>
+        <h1>Código não entontrado</h1>
     </main>
     <footer>
         <div class="geral">
             <div class="logo2">
-                <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+                <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
             </div>
             <div class="contato">
                 <div class="telefone">
