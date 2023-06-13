@@ -27,8 +27,8 @@
             <a href="{% url 'sobre' %}">SOBRE</a>
         </div>
         <div class="perfil">
-            <a href="#"><i class="fa-solid fa-bell"></i></a>
-            <a href="#"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
+            <a href="#" class="user">{{user}}</a>
+            <a class="sair" href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i></a>
         </div>
     </nav>
     <main class="consumo">
