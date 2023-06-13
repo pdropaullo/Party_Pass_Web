@@ -116,6 +116,7 @@ tbody>tr {
 
 tbody>tr>td>a {
     color: white;
+    text-decoration: underline;
 }
 
 tbody>tr:hover {

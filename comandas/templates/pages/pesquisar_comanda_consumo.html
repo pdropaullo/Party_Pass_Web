@@ -3,81 +3,100 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/recarregar_comanda.css' %}">
-    <title>Pesquisar Comanda - Party Pass</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/pesquisar_comanda_consumo.css' %}" />
+  <script defer src="{% static 'js/scripts.js'%}"></script>
+  <title>Realizar Consumo - Party Pass</title>
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
-            <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
-            <a href="{% url 'home' %}">Party Pass</a>
-        </div>
-        <div class="menus">
-            <a href="{% url 'home' %}">INÍCIO</a>
-            <a href="{% url 'ferramentas' %}">FERRAMENTAS</a>
-            <a href="{% url 'sobre' %}">SOBRE</a>
-        </div>
-        <div class="perfil">
-            <a href=""><i class="fa-solid fa-bell"></i></a>
-            <a href=""><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
-        </div>
-    </nav>
-    <main class="recarregar">
-        <div class="itens">
-            <div class="numero_comanda">
-                <h1>Realizar Consumo</h1>
-                <h2>Número da Comanda</h2>
-                <form action="{% url 'search_id_consumo' %}" method="GET">
-                    <input type="text" name="search" placeholder="Pesquisar...">
-                    <button type="submit">Pesquisar</button>
-                </form>
-            </div>            
-        </div>
-    </main>
-    <footer>
-        <div class="geral">
-            <div class="logo2">
-                <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
+  <nav>
+    <div class="logo">
+      <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt="" /></a>
+      <a href="{% url 'home' %}">Party Pass</a>
+    </div>
+    <div class="menus">
+      <a href="{% url 'home' %}">INÍCIO</a>
+      <a href="{% url 'ferramentas' %}">FERRAMENTAS</a>
+      <a href="{% url 'sobre' %}">SOBRE</a>
+    </div>
+    <div class="perfil">
+      <a href="#" class="user">{{user}}</a>
+      <a class="sair" href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i></a>
+    </div>
+  </nav>
+  <main class="consumir">
+    <div class="itens">
+      <div class="numero_comanda">
+        <h1>Realizar Consumo</h1>
+        <div class="infos_comanda">
+          <form class="infos_produto" action="{% url 'search_id_consumo' %}" method="GET">
+            <div class="cliente_comanda">
+              <h2>Número da Comanda:</h2>
+              <input type="text" class="cod_comanda" name="busca_com" placeholder="Pesquisar comanda"
+                value="{{ busca_com }}" />
             </div>
-            <div class="contato">
-                <div class="telefone">
-                    <h2>Telefone</h2>
-                    <h3>+55 (48) 91234-5678</h3>
-                </div>
-                <div class="email">
-                    <h2>Email</h2>
-                    <h3>party.pass.senac@gmail.com</h3>
-                </div>
+            <div class="produto_comanda">
+              <h2>Cód. do Produto:</h2>
+              <input type="text" class="cod_produto" name="produto_id" placeholder="Pesquisar produto"
+                value="{{ produto_id }}" />
             </div>
-            <div class="infos">
-                <div class="sede">
-                    <h3>Rua Drink, 51, Florianópolis - SC</h3>
-                </div>
-                <div class="social">
-                    <h2>Siga-nos</h2>
-                    <div class="icons">
-                        <a href=""><i class="fa-brands fa-instagram"></i></a>
-                        <a href=""><i class="fa-brands fa-facebook"></i></a>
-                        <a href=""><i class="fa-brands fa-youtube"></i></i></a>
-                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://github.com/pdropaullo/Party_Pass_Web"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                </div>
+            <div class="qtd_comanda">
+              <h2>Quantidade:</h2>
+              <input type="number" class="quantidade" name="quantidade" value="{{ quantidade }}" />
             </div>
+            <div class="buttons">
+              <button class="btn-search" type="submit">Confirmar</button>
+            </div>
+          </form>
         </div>
-        <div class="rodape">
-            <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="geral">
+      <div class="logo2">
+        <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt="" /></a>
+      </div>
+      <div class="contato">
+        <div class="telefone">
+          <h2>Telefone</h2>
+          <h3>+55 (48) 91234-5678</h3>
         </div>
-    </footer>
+        <div class="email">
+          <h2>Email</h2>
+          <h3><a href="mailto:party.pass.senac@gmail.com">party.pass.senac@gmail.com</a></h3>
+        </div>
+      </div>
+      <div class="infos">
+        <div class="sede">
+          <h3>Rua Drink, 51, Florianópolis - SC</h3>
+        </div>
+        <div class="social">
+          <h2>Siga-nos</h2>
+          <div class="icons">
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-youtube"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://github.com/pdropaullo/Party_Pass_Web"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rodape">
+      <h4>
+        Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.
+      </h4>
+    </div>
+  </footer>
 </body>
 
 </html>

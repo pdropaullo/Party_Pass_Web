@@ -5,9 +5,12 @@ from comandas.models import Comandas
 from datetime import date
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(redirect_field_name="login")
 def cadastrar_cliente(request):
+    comandas = Comandas.objects.filter(usuario_id=request.user.id).order_by("-id")
     if request.method == "POST":
         nome = request.POST.get("Nome")
         cpf = request.POST.get("CPF")
@@ -41,11 +44,12 @@ def cadastrar_cliente(request):
 
         return redirect("home")
     else:
-        return render(request, "pages/cadastrar_cliente.html")
+        return render(request, "pages/cadastrar_cliente.html", {"comandas": comandas})
 
 
-# def pesquisar_cliente(request):
+@login_required(redirect_field_name="login")
 def pesquisar_cliente(request):
+    comandas = Comandas.objects.filter(usuario_id=request.user.id).order_by("-id")
     busca = request.GET.get("pesquisar_cliente")
 
     if busca:
@@ -59,18 +63,8 @@ def pesquisar_cliente(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})
-
-    # busca = request.GET.get("pesquisar_cliente")
-    # clientes = Clientes.objects.filter().order_by("-id")
-
-    # if busca:
-    #     clientes = Clientes.objects.filter(
-    #         Q(nome__icontains=busca) | Q(cpf__icontains=busca)
-    #     )
-
-    # paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
-    # page_number = request.GET.get("page")
-    # page_obj = paginator.get_page(page_number)
-
-    # return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})
+    return render(
+        request,
+        "pages/pesquisar_cliente.html",
+        {"clientes": page_obj, "comandas": comandas},
+    )

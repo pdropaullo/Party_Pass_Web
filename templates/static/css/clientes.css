@@ -85,22 +85,26 @@ input {
     transition: .5s;
 }
 
+.abutton {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--green);
+    color: white;
+    font-size: 20px;
+    transition: .5s;
+}
+
 button:hover {
     cursor: pointer;
     color: yellow;
 }
 
-.buttons>a {
-    width: 100px;
-    height: 40px;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    font-size: 20px;
-}
-
 .buttons>a:hover {
-    color: black;
+    cursor: pointer;
+    color: yellow;
 }
 
 .del {

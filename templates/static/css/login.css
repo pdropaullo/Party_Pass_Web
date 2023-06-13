@@ -15,7 +15,7 @@
     --light-green: #627a7c;
 }
 
-main{
+main {
     width: 100%;
     height: 100vh;
     background-color: var(--light-green);
@@ -42,15 +42,15 @@ main{
     justify-content: space-evenly;
 }
 
-.infos_produto {
+.infos_login {
     display: flex;
     flex-direction: column;
 }
 
-.nome_produto,
-.valor_produto,
-.categoria_produto,
-.descricao_produto {
+.usuario_login,
+.senha_login,
+.email_login,
+.re-senha_login {
     display: flex;
     justify-content: flex-end;
     padding: 10px;
@@ -82,58 +82,19 @@ input {
     transition: .5s;
 }
 
-.abutton {
-    display: flex;
-    width: 100px;
-    height: 30px;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--green);
-    color: white;
-    font-size: 20px;
-    transition: .5s;
-}
-
 button:hover {
     cursor: pointer;
     color: yellow;
 }
 
-.abutton:hover {
+.cadastre_se{
+    color: white;
+    font-size: 20px;
+    text-decoration: underline;
+    transition: .5s;
+}
+
+.cadastre_se:hover{
     cursor: pointer;
     color: yellow;
-}
-
-.del {
-    background-color: red;
-    transition: .3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .5s;
-    width: 80px;
-    height: 30px;
-    color: white;
-    font-size: 20px;
-    border-radius: 5px;
-}
-
-.alt {
-    background-color: green;
-    transition: .3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .5s;
-    width: 80px;
-    height: 30px;
-    color: white;
-    font-size: 20px;
-    border-radius: 5px;
-}
-
-.del:hover,
-.alt:hover {
-    opacity: .8;
-    color: black;
 }
