@@ -36,7 +36,7 @@ def cadastrar_cliente(request):
         )
 
         nova_comanda = Comandas(
-            cliente=novo_cliente, ultima_recarga=date.today(), saldo=saldo
+            cliente=novo_cliente, ultima_recarga=date.today(), saldo=saldo, usuario_id=request.user.id
         )
 
         novo_cliente.save()
@@ -57,6 +57,15 @@ def pesquisar_cliente(request):
         clientes = Clientes.objects.filter(
             Q(nome__icontains=busca) | Q(cpf__icontains=busca)
         ).order_by("-id")
+
+        for cliente in clientes:
+            comanda = Comandas.objects.filter(cliente=cliente).first()
+            if comanda:
+                cliente.saldo = comanda.saldo
+            else:
+                cliente.saldo = 0.00
+    else:
+        clientes = []
 
     paginator = Paginator(clientes, 5)
     page_number = request.GET.get("page")
