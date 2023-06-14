@@ -7,6 +7,16 @@
     font-family: sans-serif;
 }
 
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
 :root {
     --black: #000f08;
     --green: #1c3738;
@@ -28,7 +38,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
+    height: 20rem;
     justify-content: space-evenly;
 }
 
@@ -37,13 +47,13 @@
 }
 
 .numero_comanda>button {
-    width: 100px;
-    height: 30px;
+    width: 10rem;
+    height: 3rem;
     align-items: center;
     justify-content: center;
     background-color: var(--green);
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
 }
 
 .itens {
@@ -52,7 +62,7 @@
     align-items: center;
     text-align: center;
     width: 40%;
-    height: 500px;
+    height: 50rem;
     margin: auto;
     justify-content: space-evenly
 }
@@ -68,33 +78,33 @@
 .forma_pagamento {
     display: flex;
     justify-content: flex-end;
-    padding: 10px;
+    padding: 1rem;
 }
 
 input,
 select {
-    width: 250px;
-    padding-left: 5px;
-    margin-left: 10px;
-    font-size: 16px;
+    width: 25rem;
+    padding-left: .5rem;
+    margin-left: 1rem;
+    font-size: 1.6rem;
 }
 
 .buttons {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    padding-top: 20px;
+    padding-top: 2rem;
 }
 
 button {
     display: flex;
-    width: 100px;
-    height: 30px;
+    width: 10rem;
+    height: 3rem;
     align-items: center;
     justify-content: center;
     background-color: var(--green);
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
 }
 
 button:hover {
@@ -103,7 +113,7 @@ button:hover {
 }
 
 .pesquisar_comanda{
-    width: 500px;
+    width: 50rem;
     display: flex;
     justify-content: space-evenly;
 }

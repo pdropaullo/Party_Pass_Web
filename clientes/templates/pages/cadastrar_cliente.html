@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="{% static 'js/jquery.mask.js'%}"></script>
     <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
-    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="{% static 'js/mask.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/clientes.css' %}">
+        <link rel="stylesheet" href="{% static 'css/queries.css' %}">
+    <script defer src="{% static 'js/scripts.js'%}"></script>
     <title>Cadastrar Cliente - Party Pass</title>
 </head>
 
@@ -23,15 +28,18 @@
             <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
             <a href="{% url 'home' %}">Party Pass</a>
         </div>
-        <div class="menus">
-            <a href="{% url 'home' %}">INÍCIO</a>
-            <a href="{% url 'ferramentas' %}">FERRAMENTAS</a>
-            <a href="{% url 'sobre' %}">SOBRE</a>
+        <div class="main-nav">
+            <ul class="main-nav-list">
+                <li><a class="main-nav-link" href="{% url 'home' %}">INÍCIO</a></li>
+                <li><a class="main-nav-link" href="{% url 'ferramentas' %}">FERRAMENTAS</a></li>
+                <li><a class="main-nav-link" href="{% url 'sobre' %}">SOBRE</a></li>
+                <li><a class="nav-icon" href="{% url 'logout' %}"><ion-icon name="log-out-outline"></ion-icon></a></li>
+            </ul>
         </div>
-        <div class="perfil">
-            <a href="#" class="user">{{user}}</a>
-            <a class="sair" href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i></a>
-        </div>
+        <button class="btn-mobile-nav">
+            <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+            <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
     </nav>
     <main>
         <div class="itens">
@@ -41,31 +49,31 @@
             <form class="infos_cliente" method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
                 <div class="nome_cliente">
                     <h2>Nome:</h2>
-                    <input name="Nome" type="text" placeholder="Nome">
+                    <input name="nome" type="text" placeholder="Nome">
                 </div>
                 <div class="cpf_cliente">
                     <h2>CPF:</h2>
-                    <input class="cpf" name="CPF" type="text" placeholder="CPF">
+                    <input class="cpf" name="cpf" type="text" placeholder="CPF">
                 </div>
                 <div class="saldo_cliente">
                     <h2>Saldo:</h2>
-                    <input class="saldo" name="Saldo" type="number" placeholder="Saldo">
+                    <input class="saldo" name="saldo" type="number" placeholder="Saldo">
                 </div>
                 <div class="email_cliente">
                     <h2>Email:</h2>
-                    <input name="Email" type="text" placeholder="Email">
+                    <input name="email" type="text" placeholder="Email">
                 </div>
                 <div class="telefone_cliente">
                     <h2>Telefone:</h2>
-                    <input class="Telefone" name="Telefone" type="text" placeholder="Telefone">
+                    <input class="telefone" name="telefone" type="text" placeholder="Telefone">
                 </div>
                 <div class="dt_nasc_cliente">
                     <h2>Data de Nascimento:</h2>
-                    <input name="Data_nascimento" type="date" placeholder="Data_nascimento">
+                    <input name="data_nascimento" type="date" placeholder="Data_nascimento">
                 </div>
                 <div class="endereco_cliente">
                     <h2>Endereço:</h2>
-                    <input name="Endereço" type="text" placeholder="Endereço">
+                    <input name="endereco" type="text" placeholder="Endereço">
                 </div>
                 <div class="buttons">
                     <a class="abutton" href="{% url 'home' %}">Cancelar</a>
@@ -110,13 +118,7 @@
             <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
         </div>
     </footer>
-    <script>
-        $(document).ready(function () {
-            $('.cpf').mask('000.000.000-00')
-            $('.saldo').maskMoney({ thousands: '.', decimal: ',', allowZero: true });
-            $('.Telefone').mask('(00) 00000-0000')
-        })
-    </script>
+    
 </body>
 
 </html>

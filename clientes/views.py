@@ -12,15 +12,15 @@ from django.contrib.auth.decorators import login_required
 def cadastrar_cliente(request):
     comandas = Comandas.objects.filter(usuario_id=request.user.id).order_by("-id")
     if request.method == "POST":
-        nome = request.POST.get("Nome")
-        cpf = request.POST.get("CPF")
-        telefone = request.POST.get("Telefone")
+        nome = request.POST.get("nome")
+        cpf = request.POST.get("cpf")
+        telefone = request.POST.get("telefone")
         if telefone == "":
             return HttpResponse("O campo Telefone é obrigatório.")
-        email = request.POST.get("Email")
-        data_nascimento = request.POST.get("Data_nascimento")
-        endereco = request.POST.get("Endereço")
-        saldo = request.POST.get("Saldo")
+        email = request.POST.get("email")
+        data_nascimento = request.POST.get("data_nascimento")
+        endereco = request.POST.get("endereco")
+        saldo = request.POST.get("saldo")
         if saldo:
             saldo = float(saldo)
         else:
@@ -50,6 +50,7 @@ def cadastrar_cliente(request):
 def pesquisar_cliente(request):
     comandas = Comandas.objects.filter(usuario_id=request.user.id).order_by("-id")
     busca = request.GET.get("pesquisar_cliente")
+    clientes = Clientes.objects.filter().order_by("-id")
 
     if busca:
         clientes = Clientes.objects.filter(
@@ -66,7 +67,7 @@ def pesquisar_cliente(request):
     else:
         clientes = []
 
-    paginator = Paginator(clientes, 5)  
+    paginator = Paginator(clientes, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
@@ -75,3 +76,4 @@ def pesquisar_cliente(request):
         "pages/pesquisar_cliente.html",
         {"clientes": page_obj, "comandas": comandas},
     )
+

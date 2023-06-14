@@ -6,6 +6,7 @@ from clientes.models import Clientes
 from datetime import date
 from produtos.models import Produtos
 from django.http import JsonResponse
+from django.contrib import messages
 
 
 def index(request):
@@ -114,7 +115,7 @@ def search_id_consumo(request):
                 quantidade=quantidade,
             )
 
-    return render(request, "pages/error.html")
+    return redirect('pesquisar_comanda_consumo')
 
 
 def realizar_consumo(request, cliente_id, comanda_id, produto_id, quantidade):
@@ -127,68 +128,26 @@ def realizar_consumo(request, cliente_id, comanda_id, produto_id, quantidade):
         quantidade = int(quantidade)
 
         if quantidade <= 0:
-            # Quantidade inválida (zero ou negativa)
-            return JsonResponse({"status": "error", "message": "Quantidade inválida."})
+            messages.error(request, message='Quantidade inválida')
+            return redirect('pesquisar_comanda_consumo')
 
         if comanda.saldo >= produto.valor * quantidade:
-            # Calcular o valor total do consumo
+
             valor_total = produto.valor * quantidade
 
-            # Atualizar o saldo da comanda
             comanda.saldo -= valor_total
             comanda.save()
 
-            # Retornar uma resposta JSON indicando sucesso
-            return JsonResponse(
-                {"status": "success", "message": "Consumo realizado com sucesso."}
-            )
+            return redirect('sucesso')
 
-        # Saldo insuficiente na comanda
-        return JsonResponse(
-            {"status": "error", "message": "Saldo insuficiente na comanda."}
-        )
+        messages.error(request, message='Saldo insuficiente')
+        return redirect('pesquisar_comanda_consumo')
+        
 
     except ValueError:
-        # Quantidade inválida (não é um número inteiro)
-        return JsonResponse({"status": "error", "message": "Quantidade inválida."})
-
-    # Verificar se o cliente, comanda e produto existem
-    cliente = get_object_or_404(Clientes, pk=cliente_id)
-    comanda = get_object_or_404(Comandas, pk=comanda_id, cliente=cliente)
-    produto = get_object_or_404(Produtos, pk=produto_id)
-
-    # Obter a quantidade a ser consumida
-
-    quantidade = int(request.GET.get("quantidade"))
-
-    # Verificar se o saldo da comanda é suficiente para o consumo
-    if comanda.saldo >= produto.valor * quantidade:
-        # Calcular o valor total do consumo
-        valor_total = produto.valor * quantidade
-
-        # Atualizar o saldo da comanda
-        comanda.saldo -= valor_total
-        comanda.save()
-
-        # Retornar uma resposta JSON indicando sucesso
-        return JsonResponse(
-            {"status": "success", "message": "Consumo realizado com sucesso."}
-        )
-    else:
-        # Retornar uma resposta JSON indicando erro de saldo insuficiente
-        return JsonResponse(
-            {"status": "error", "message": "Saldo insuficiente na comanda."}
-        )
-
-
-# def busca_prod(request):
-#     produtos = Produtos.objects.all()
-#     data = [{'id': produto.id, 'nome': produto.nome, 'valor': produto.valor} for produto in produtos]
-#     return JsonResponse(data, safe=False)
-
-# def realizar_consumo(request):
-#     comandas = Comandas.objects.all()
-#     return render(request, 'pages/realizar_consumo.html', {'comandas': comandas})
+        messages.error(request, message='Quantidade inválida')
+        return redirect('pesquisar_comanda_consumo')
+        
 
 
 def busca_prod(request):
@@ -196,3 +155,6 @@ def busca_prod(request):
     produto = get_object_or_404(Produtos, id=busca_prod_id)
     data = {"id": produto.id, "nome": produto.nome, "valor": produto.valor}
     return JsonResponse(data, safe=False)
+
+def sucesso(request):
+    return render(request, "pages/sucesso.html")

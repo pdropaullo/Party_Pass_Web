@@ -7,6 +7,16 @@
     font-family: sans-serif;
 }
 
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
 :root {
     --black: #000f08;
     --green: #1c3738;
@@ -22,14 +32,14 @@
     background-color: var(--light-green);
     display: flex;
     color: white;
-    padding-top: 60px;
+    padding-top: 6rem;
 }
 
 .numero_consumo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
+    height: 20rem;
     justify-content: space-evenly;
 }
 
@@ -38,13 +48,13 @@
 }
 
 .numero_consumo>button {
-    width: 100px;
-    height: 30px;
+    width: 10rem;
+    height: 3rem;
     align-items: center;
     justify-content: center;
     background-color: var(--green);
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
 }
 
 .itens {
@@ -53,7 +63,7 @@
     align-items: center;
     text-align: center;
     width: 40%;
-    height: 600px;
+    height: 60rem;
     margin: auto;
     justify-content: space-evenly
 }
@@ -71,15 +81,15 @@
 .total {
     display: flex;
     justify-content: flex-end;
-    padding: 10px;
+    padding: 1rem;
 }
 
 input,
 select {
-    width: 250px;
-    padding-left: 5px;
-    margin-left: 10px;
-    font-size: 16px;
+    width: 25rem;
+    padding-left: .5rem;
+    margin-left: 1rem;
+    font-size: 1.6rem;
 }
 
 .buttons {
@@ -90,13 +100,13 @@ select {
 
 .buttons>button {
     display: flex;
-    width: 100px;
-    height: 30px;
+    width: 10rem;
+    height: 3rem;
     align-items: center;
     justify-content: center;
     background-color: var(--green);
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
 }
 
 button:hover {
