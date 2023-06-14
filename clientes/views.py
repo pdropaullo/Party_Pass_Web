@@ -12,15 +12,15 @@ from django.contrib.auth.decorators import login_required
 def cadastrar_cliente(request):
     comandas = Comandas.objects.filter(usuario_id=request.user.id).order_by("-id")
     if request.method == "POST":
-        nome = request.POST.get("Nome")
-        cpf = request.POST.get("CPF")
-        telefone = request.POST.get("Telefone")
+        nome = request.POST.get("nome")
+        cpf = request.POST.get("cpf")
+        telefone = request.POST.get("telefone")
         if telefone == "":
             return HttpResponse("O campo Telefone é obrigatório.")
-        email = request.POST.get("Email")
-        data_nascimento = request.POST.get("Data_nascimento")
-        endereco = request.POST.get("Endereço")
-        saldo = request.POST.get("Saldo")
+        email = request.POST.get("email")
+        data_nascimento = request.POST.get("data_nascimento")
+        endereco = request.POST.get("endereco")
+        saldo = request.POST.get("saldo")
         if saldo:
             saldo = float(saldo)
         else:

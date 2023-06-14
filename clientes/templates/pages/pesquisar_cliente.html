@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="{% static 'js/jquery.mask.js'%}"></script>
     <script defer src="{% static 'js/jquery.mask.min.js'%}"></script>
-    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="{% static 'js/mask.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/pesquisar_cliente.css' %}">
     <title>Pesquisar Cliente - Party Pass</title>
@@ -38,7 +41,7 @@
             <div class="pesquisar">
                 <h1>Pesquisar Clientes</h1>
             </div>
-            <form class="inputs" action="{% url 'pesquisar_cliente'%}">
+            <form class="inputs" action="{% url 'pesquisar_cliente' %}">
                 <input id="pesquisa" type="text" name="pesquisar_cliente" placeholder="Nome ou CPF...">
                 <button type="submit">Buscar</button>
             </form>
@@ -72,11 +75,11 @@
             </table>
             <div class="pagination">
                 {% if clientes.has_previous %}
-                    <a class="paginas" href="?page={{ clientes.previous_page_number }}">◀ Anterior</a>
+                <a class="paginas" href="?page={{ clientes.previous_page_number }}">◀ Anterior</a>
                 {% endif %}
                 <span class="current-page">{{ clientes.number }}</span>
                 {% if clientes.has_next %}
-                    <a class="paginas" href="?page={{ clientes.next_page_number }}">Próximo ▶</a>
+                <a class="paginas" href="?page={{ clientes.next_page_number }}">Próximo ▶</a>
                 {% endif %}
             </div>
         </div>
@@ -117,12 +120,7 @@
             <h4>Party Pass Tecnologia LTDA. | 2023 | Todos os direitos reservados.</h4>
         </div>
     </footer>
-    <script>
-        $(document).ready(function () {
-            $('.cpf').mask('000.000.000-00')
-            $('.Telefone').mask('(00) 00000-0000')
-        })
-    </script>
+    
 </body>
 
 </html>
