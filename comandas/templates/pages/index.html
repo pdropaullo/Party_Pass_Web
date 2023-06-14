@@ -9,7 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/queries.css' %}">
+    <script defer src="{% static 'js/scripts.js'%}"></script>
     <title>Início - Party Pass</title>
 </head>
 
@@ -19,19 +29,20 @@
             <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
             <a href="#inicio">Party Pass</a>
         </div>
-        <div class="menus">
-            <a href="#inicio">INÍCIO</a>
-            <a href="#main_index">FERRAMENTAS</a>
-            <a href="#sobre">SOBRE</a>
+        <div class="main-nav">
+            <ul class="main-nav-list">
+                <li><a class="main-nav-link" href="#inicio">INÍCIO</a></li>
+                <li><a class="main-nav-link" href="#main_index">FERRAMENTAS</a></li>
+                <li><a class="main-nav-link" href="#sobre">SOBRE</a></li>
+                <li><a class="nav-icon" href="{% url 'logout' %}"><ion-icon name="log-out-outline"></ion-icon></a></li>
+            </ul>
         </div>
-        <div class="perfil">
-            <a href="#" class="user">{{user}}</a>
-            <a class="sair" href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i></a>
-        </div>
+        <button class="btn-mobile-nav">
+            <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+            <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
     </nav>
     <header id="inicio">
-        <img src="https://media.istockphoto.com/id/624494724/pt/foto/empty-wooden-bar-counter.jpg?s=612x612&w=0&k=20&c=3aZOArTwzBia7EDGy-eqoYc4IKMp9cw5tOVh2PjaOSg="
-            alt="">
         <div class="welcome">
             <h1>Seja Bem Vindo(a)!</h1>
             <h1>Conheça abaixo nossas ferramentas</h1>
@@ -39,22 +50,28 @@
         </div>
     </header>
     <main class="main_index" id="main_index">
-        <h1>Nossas Ferramentas</h1>
-        <div class="ferramentas">
+        <h1 class="ferramentas__title">Nossas Ferramentas</h1>
+        <div class="ferramentas grid grid--3-cols">
             <div class="cliente">
                 <h1>Cliente</h1>
-                <a href="{% url 'cadastrar_cliente' %}"><button>Cadastrar Cliente</button></a>
-                <a href="{% url 'pesquisar_cliente' %}"><button>Pesquisar Cliente</button></a>
+                <div class="btn__container">
+                    <a class="btn btn__ferramentas" href="{% url 'cadastrar_cliente' %}">Cadastrar Cliente</a>
+                    <a class="btn btn__ferramentas" href="{% url 'pesquisar_cliente' %}">Pesquisar Cliente</a>
+                </div>
             </div>
             <div class="produto">
                 <h1>Produto</h1>
-                <a href="{% url 'cadastrar_produtos' %}"><button>Cadastrar Produto</button></a>
-                <a href="{% url 'pesquisar_produtos' %}"><button>Pesquisar Produto</button></a>
+                <div class="btn__container">
+                    <a class="btn btn__ferramentas" href="{% url 'cadastrar_produtos' %}">Cadastrar Produto</a>
+                    <a class="btn btn__ferramentas" href="{% url 'pesquisar_produtos' %}">Pesquisar Produto</a>
+                </div>
             </div>
             <div class="comanda">
                 <h1>Comanda</h1>
-                <a href="{% url 'pesquisar_comanda' %}"><button>Recarregar Comanda</button></a>
-                <a href="{% url 'pesquisar_comanda_consumo' %}"><button>Realizar Consumo</button></a>
+                <div class="btn__container">
+                    <a class="btn btn__ferramentas" href="{% url 'pesquisar_comanda' %}">Recarregar Comanda</a>
+                    <a class="btn btn__ferramentas" href="{% url 'pesquisar_comanda_consumo' %}">Realizar Consumo</a>
+                </div>
             </div>
         </div>
     </main>
@@ -66,7 +83,7 @@
             <h2>Party Pass foi desenvolvido durante a disciplina de Desenvolvimento Web, orientados pelo Professor
                 Wildson Caio</h2>
         </div>
-        <div class="cards">
+        <div class="cards grid grid--4-cols">
             <div class="card">
                 <img src="https://avatars.githubusercontent.com/u/84816808?v=4" alt="">
                 <h2>Ana Flávia de Freitas Corrêa</h2>
@@ -108,7 +125,7 @@
         </div>
     </div>
     <footer>
-        <div class="geral">
+        <div class="geral grid grid--3-cols">
             <div class="logo2">
                 <a href="#inicio"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
             </div>
