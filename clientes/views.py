@@ -35,9 +35,8 @@ def cadastrar_cliente(request):
             endereco=endereco,
         )
 
-        nova_comanda = Comandas(
-            cliente=novo_cliente, ultima_recarga=date.today(), saldo=saldo
-        )
+        nova_comanda = Comandas(cliente=novo_cliente, ultima_recarga=date.today(), saldo=saldo, usuario_id=request.user.id)
+
 
         novo_cliente.save()
         nova_comanda.save()
@@ -56,6 +55,14 @@ def pesquisar_cliente(request):
         clientes = Clientes.objects.filter(
             Q(nome__icontains=busca) | Q(cpf__icontains=busca)
         ).order_by("-id")
+
+        # Adicione o saldo de cada cliente aos resultados da pesquisa
+        for cliente in clientes:
+            comanda = Comandas.objects.filter(cliente=cliente).first()
+            if comanda:
+                cliente.saldo = comanda.saldo
+            else:
+                cliente.saldo = 0.00
     else:
         clientes = []
 
