@@ -56,9 +56,9 @@ def pesquisar_cliente(request):
     if busca:
         clientes = Clientes.objects.filter(
             Q(nome__icontains=busca) | Q(cpf__icontains=busca)
-        )
+        ).order_by("-id")
 
-    paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
+    paginator = Paginator(clientes, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
@@ -67,3 +67,31 @@ def pesquisar_cliente(request):
         "pages/pesquisar_cliente.html",
         {"clientes": page_obj, "comandas": comandas},
     )
+
+    # busca = request.GET.get("pesquisar_cliente")
+    # clientes = Clientes.objects.filter().order_by("-id")
+
+    # if busca:
+    #     clientes = Clientes.objects.filter(
+    #         Q(nome__icontains=busca) | Q(cpf__icontains=busca)
+    #     )
+
+    # paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
+    # page_number = request.GET.get("page")
+    # page_obj = paginator.get_page(page_number)
+
+    # return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})
+
+    # busca = request.GET.get("pesquisar_cliente")
+    # clientes = Clientes.objects.filter().order_by("-id")
+
+    # if busca:
+    #     clientes = Clientes.objects.filter(
+    #         Q(nome__icontains=busca) | Q(cpf__icontains=busca)
+    #     )
+
+    # paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
+    # page_number = request.GET.get("page")
+    # page_obj = paginator.get_page(page_number)
+
+    # return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})
