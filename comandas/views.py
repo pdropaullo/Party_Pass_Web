@@ -33,6 +33,9 @@ def search(request):
         return redirect("recarregar_comanda", id=q)
     else:
         return render(request, "pages/error.html", {"comandas": comandas})
+    
+
+
 
 
 @login_required(redirect_field_name="login")

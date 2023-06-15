@@ -6,7 +6,7 @@ from datetime import date
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-
+from comandas.views import recarregar_comanda
 
 @login_required(redirect_field_name="login")
 def cadastrar_cliente(request):
@@ -15,8 +15,24 @@ def cadastrar_cliente(request):
         nome = request.POST.get("nome")
         cpf = request.POST.get("cpf")
         telefone = request.POST.get("telefone")
-        if telefone == "":
-            return HttpResponse("O campo Telefone é obrigatório.")
+        if not nome or nome.isspace():
+            messages.error(request, "O campo Nome é obrigatório.")
+            return redirect("cadastrar_cliente")  
+        elif len(nome) < 3:
+            messages.error(request, "O nome deve ter pelo menos 3 caracteres.")
+            return redirect("cadastrar_cliente") 
+        if not telefone or telefone.isspace():
+            messages.error(request, "O campo Telefone é obrigatório.")
+            return redirect("cadastrar_cliente")  
+        if not cpf or cpf.isspace():
+            messages.error(request, "O campo CPF é obrigatório.")
+            return redirect("cadastrar_cliente")  
+        
+
+        if Clientes.objects.filter(cpf=cpf).exists():
+            messages.error(request, "CPF já cadastrado.")
+            return redirect("cadastrar_cliente")  
+        
         email = request.POST.get("email")
         data_nascimento = request.POST.get("data_nascimento")
         endereco = request.POST.get("endereco")
@@ -35,12 +51,14 @@ def cadastrar_cliente(request):
             endereco=endereco,
         )
 
-        nova_comanda = Comandas(cliente=novo_cliente, ultima_recarga=date.today(), saldo=saldo, usuario_id=request.user.id)
-
+        nova_comanda = Comandas(
+            cliente=novo_cliente, ultima_recarga=date.today(), saldo=saldo, usuario_id=request.user.id
+        )
 
         novo_cliente.save()
         nova_comanda.save()
 
+        messages.success(request, "Cliente cadastrado com sucesso!")
         return redirect("home")
     else:
         return render(request, "pages/cadastrar_cliente.html", {"comandas": comandas})
@@ -57,7 +75,6 @@ def pesquisar_cliente(request):
             Q(nome__icontains=busca) | Q(cpf__icontains=busca)
         ).order_by("-id")
 
-        # Adicione o saldo de cada cliente aos resultados da pesquisa
         for cliente in clientes:
             comanda = Comandas.objects.filter(cliente=cliente).first()
             if comanda:
@@ -77,3 +94,32 @@ def pesquisar_cliente(request):
         {"clientes": page_obj, "comandas": comandas},
     )
 
+    # busca = request.GET.get("pesquisar_cliente")
+    # clientes = Clientes.objects.filter().order_by("-id")
+
+    # if busca:
+    #     clientes = Clientes.objects.filter(
+    #         Q(nome__icontains=busca) | Q(cpf__icontains=busca)
+    #     )
+
+    # paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
+    # page_number = request.GET.get("page")
+    # page_obj = paginator.get_page(page_number)
+
+    # return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})
+
+    # busca = request.GET.get("pesquisar_cliente")
+    # clientes = Clientes.objects.filter().order_by("-id")
+
+    # if busca:
+    #     clientes = Clientes.objects.filter(
+    #         Q(nome__icontains=busca) | Q(cpf__icontains=busca)
+    #     )
+
+    # paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
+    # page_number = request.GET.get("page")
+    # page_obj = paginator.get_page(page_number)
+
+    # return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})
+def redirecionar_recarregar_comanda(request, id):
+    return redirect("recarregar_comanda:recarregar_comanda", id=id)
