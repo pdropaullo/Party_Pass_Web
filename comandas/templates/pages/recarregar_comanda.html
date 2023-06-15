@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="{% static 'css/recarregar_comanda.css' %}">
         <link rel="stylesheet" href="{% static 'css/queries.css' %}">
     <script defer src="{% static 'js/scripts.js'%}"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
     <title>Recarregar Comanda - Party Pass</title>
 </head>
 
@@ -52,7 +60,7 @@
                     </div>
                     <div class="valor_comanda">
                         <h2>Valor da Recarga:</h2>
-                        <input type="number" name="valor_comanda">
+                        <input class="valor" type="number" name="valor_comanda">
                     </div>
                     <div class="forma_pagamento">
                         <h2>Forma de Pagamento:</h2>

@@ -3,6 +3,7 @@ from .models import Produtos
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from comandas.models import Comandas
+from django.contrib import messages
 
 
 @login_required(redirect_field_name="login")
@@ -13,12 +14,36 @@ def cadastrar_produtos(request):
         valor = request.POST.get("valor").replace(",", ".")
         categoria = request.POST.get("categoria")
         descricao = request.POST.get("descricao")
+        
+        if not nome or nome.isspace():
+            messages.error(request, "O campo Nome é obrigatório.")
+            return redirect("cadastrar_produtos")  
+        elif len(nome) < 3:
+            messages.error(request, "O nome deve ter pelo menos 3 caracteres.")
+            return redirect("cadastrar_produtos") 
+        if not descricao or descricao.isspace():
+            messages.error(request, "O campo Descrição é obrigatório.")
+            return redirect("cadastrar_produtos")  
+        if not categoria or categoria.isspace():
+            messages.error(request, "O campo Categoria é obrigatório.")
+            return redirect("cadastrar_produtos")     
+        if not valor or valor.isspace():
+            messages.error(request, "O campo Valor é obrigatório.")
+            return redirect("cadastrar_produtos") 
+        try:
+            valor = float(valor)
+            if valor <= 0:
+                messages.error(request, "O valor deve ser maior que zero.")
+                return redirect("cadastrar_produtos")
+        except ValueError:
+            messages.error(request, "O valor deve ser um número válido.")
+            return redirect("cadastrar_produtos")
 
-        novo_produto = Produtos(
+        produto = Produtos(
             nome=nome, valor=valor, categoria=categoria, descricao=descricao
         )
-        novo_produto.save()
-        return redirect("home")
+        produto.save()
+        return render(request, "pages/detalhes_produtos.html", {"produto": produto})
 
     else:
         return render(request, "pages/cadastrar_produtos.html", {"comandas": comandas})
@@ -79,10 +104,35 @@ def editar_produtos(request, id):
         categoria = request.POST.get("categoria")
         descricao = request.POST.get("descricao")
 
+        if not nome or nome.isspace():
+            messages.error(request, "O campo Nome é obrigatório.")
+        elif len(nome) < 3:
+            messages.error(request, "O nome deve ter pelo menos 3 caracteres.")
+        if not descricao or descricao.isspace():
+            messages.error(request, "O campo Descrição é obrigatório.")
+        if not categoria or categoria.isspace():
+            messages.error(request, "O campo Categoria é obrigatório.")
+        if not valor or valor.isspace():
+            messages.error(request, "O campo Valor é obrigatório.")
+        try:
+            valor = float(valor)
+            if valor <= 0:
+                messages.error(request, "O valor deve ser maior que zero.")
+        except ValueError:
+            messages.error(request, "O valor deve ser um número válido.")
+        
+        if messages.get_messages(request):
+            return render(
+                request,
+                "pages/editar_produtos.html",
+                {"produto": produto, "comandas": comandas},
+            )
+        
         produto.nome = nome
         produto.valor = valor
         produto.categoria = categoria
         produto.descricao = descricao
+        
 
         produto.save()
         return redirect("home")

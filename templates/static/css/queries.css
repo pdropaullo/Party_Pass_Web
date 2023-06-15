@@ -3,7 +3,13 @@
 .grid--4-cols {
   grid-template-columns: repeat(2, 1fr);
 }
+.grid--3-cols {
+  grid-template-columns: 1fr;
+}
 
+.main_index {
+  height: 150vh;
+}
 
   .btn-mobile-nav {
     display: block;
@@ -82,12 +88,34 @@
     height: 100%;
   }
 
-  
+  .nome_cliente,
+.cpf_cliente,
+.saldo_cliente,
+.email_cliente,
+.telefone_cliente,
+.dt_nasc_cliente,
+.endereco_cliente,
+.nome_produto,
+.valor_produto,
+.categoria_produto,
+.descricao_produto,
+.cliente_comanda,
+.produto_comanda,
+.qtd_comanda {
+  flex-direction: column;
+}
+
+input, select {
+  margin-left: 0;
+}
+
+.titulo_ferramenta {
+  margin-bottom: 3rem;
+}
+
+table {
+  width: 95%;
+}
 
 }
 
-/* Mobile 544px */
-
-@media (max-width: 34em) {
-
-}
