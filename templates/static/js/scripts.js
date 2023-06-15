@@ -25,12 +25,7 @@
         getData(codigo);
         console.log(data);
     });
-
-
-
-
-
-
+    
 // let busca_cod = document.querySelector('.busca_cod');
 // let result = document.querySelector('.prod_info');
 // let codigo = Number(document.querySelector(".cod_prod").value);
@@ -83,5 +78,3 @@
 
 
 // })
-
-

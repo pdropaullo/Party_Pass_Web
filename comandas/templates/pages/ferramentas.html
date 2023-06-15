@@ -25,8 +25,8 @@
             <a href="{% url 'sobre' %}">SOBRE</a>
         </div>
         <div class="perfil">
-            <a href="#"><i class="fa-solid fa-bell"></i></a>
-            <a href="#"><img src="https://source.unsplash.com/60x60/?perfil" alt=""></a>
+            <a href="#" class="user">{{user}}</a>
+            <a class="sair" href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i></a>
         </div>
     </nav>
     <main class="main_index" id="main_index">
@@ -46,7 +46,6 @@
                 <h1>Comanda</h1>
                 <a href="{% url 'pesquisar_comanda' %}"><button>Recarregar Comanda</button></a>
                 <a href="{% url 'pesquisar_comanda_consumo' %}"><button>Realizar Consumo</button></a>
-                <a href="{% url 'realizar_consumo' %}"><button>Realizar Consumo</button></a>
             </div>
         </div>
     </main>
