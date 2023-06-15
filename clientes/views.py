@@ -64,6 +64,7 @@ def cadastrar_cliente(request):
         return render(request, "pages/cadastrar_cliente.html", {"comandas": comandas})
 
 
+
 @login_required(redirect_field_name="login")
 def pesquisar_cliente(request):
     comandas = Comandas.objects.filter(usuario_id=request.user.id).order_by("-id")
@@ -88,11 +89,14 @@ def pesquisar_cliente(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
+    alert_message = "Clique no nome do cliente para abrir a comanda."
+
     return render(
         request,
         "pages/pesquisar_cliente.html",
-        {"clientes": page_obj, "comandas": comandas},
+        {"clientes": page_obj, "comandas": comandas, "alert_message": alert_message},
     )
+
 
     # busca = request.GET.get("pesquisar_cliente")
     # clientes = Clientes.objects.filter().order_by("-id")
@@ -122,4 +126,4 @@ def pesquisar_cliente(request):
 
     # return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})
 def redirecionar_recarregar_comanda(request, id):
-    return redirect("recarregar_comanda:recarregar_comanda", id=id)
+    return redirect("recarregar_comanda", id=id)
