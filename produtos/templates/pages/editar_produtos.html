@@ -46,6 +46,13 @@
             <div class="titulo_ferramenta">
                 <h1>Editar Produto</h1>
             </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %} 
             <form class="infos_produto" method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
                 <div class="nome_produto">
                     <h2>Nome do Produto:</h2>
@@ -53,7 +60,7 @@
                 </div>
                 <div class="valor_produto">
                     <h2>Valor do Produto:</h2>
-                    <input name="valor" value="{{produto.valor}}" type="text">
+                    <input class="valor" name="valor" value="{{produto.valor}}" type="text">
                 </div>
                 <div class="categoria_produto">
                     <h2>Categoria do Produto:</h2>

@@ -45,8 +45,15 @@
     <main>
         <div class="itens">
             <div class="titulo_ferramenta">
-                <h1>Cadastrar Produto</h1>
+                <h1>Cadastrar Produto</h1> 
             </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %} 
             <form class="infos_produto" method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
                 <div class="nome_produto">
                     <h2>Nome do Produto:</h2>

@@ -11,7 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/recarregar_comanda.css' %}">
-        <link rel="stylesheet" href="{% static 'css/queries.css' %}">
+    <link rel="stylesheet" href="{% static 'css/queries.css' %}">
     <script defer src="{% static 'js/scripts.js'%}"></script>
     <title>Pesquisar Comanda Recarga - Party Pass</title>
 </head>
@@ -40,6 +40,13 @@
             <div class="numero_comanda">
                 <h1>Recarregar Comanda</h1>
                 <h2>Número da Comanda</h2>
+                {% if messages %}
+                <ul class="error-messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
                 <form class="pesquisar_comanda" action="{% url 'busca_id' %}" method="GET">
                     <input type="text" name="search" placeholder="Pesquisar..." value="{{ search }}">
                     <button type="submit">Pesquisar</button>

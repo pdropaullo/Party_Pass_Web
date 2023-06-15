@@ -64,10 +64,12 @@
                     <input name="descricao" value="{{produto.descricao}}" type="text" readonly class="readonly-input">
                 </div>
             </form>
+            {% if produto.id %}
             <div class="buttons">
                 <a href="{% url 'deletar_produtos' produto.id %}" class="del">Excluir</a>
                 <a href="{% url 'editar_produtos' produto.id %}" class="alt">Alterar</a>
             </div>
+            {% endif %}
         </div>
     </main>
     <footer>

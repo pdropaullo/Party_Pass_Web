@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseBadRequest
 from .models import Comandas
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -27,13 +28,21 @@ def search(request):
     q = request.GET.get("search")
     cliente = None
     comanda = None
-    if q and q.isdigit():
-        cliente = Clientes.objects.filter(id=q).first
-        comanda = Comandas.objects.filter(id=q).first
-        return redirect("recarregar_comanda", id=q)
+    if q:
+        if q.isdigit():
+            cliente = Clientes.objects.filter(id=q).first()
+            comanda = Comandas.objects.filter(id=q).first()
+            if cliente or comanda:
+                return redirect("recarregar_comanda", id=q)
+            else:
+                messages.error(request, "ID inválido.")
+                return redirect("pesquisar_comanda")
+        else:
+            messages.error(request, "O campo de pesquisa deve ser um número.")
+            return redirect("pesquisar_comanda")
     else:
-        return render(request, "pages/error.html", {"comandas": comandas})
-
+        messages.error(request, "O campo de pesquisa não pode estar vazio.")
+        return redirect("pesquisar_comanda")
 
 @login_required(redirect_field_name="login")
 def pesquisar_comanda(request):
