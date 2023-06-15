@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 
 
+
 def index(request):
     return render(request, "pages/index.html")
 
@@ -100,9 +101,12 @@ def recarregar_comanda(request, id):
 @login_required(redirect_field_name="login")
 def pesquisar_comanda_consumo(request):
     comandas = Comandas.objects.filter(usuario_id=request.user.id).order_by("-id")
+    produtos = Produtos.objects.all()
     return render(
-        request, "pages/pesquisar_comanda_consumo.html", {"comandas": comandas}
+        request, "pages/pesquisar_comanda_consumo.html", {"comandas": comandas, "produtos": produtos}
     )
+
+
 
 
 def search_id_consumo(request):
@@ -110,21 +114,34 @@ def search_id_consumo(request):
     produto_id = request.GET.get("produto_id")
     quantidade = request.GET.get("quantidade")
 
-    if q and produto_id and quantidade is not None:
-        cliente = get_object_or_404(Clientes, id=q)
-        comanda = get_object_or_404(Comandas, id=q)
-        produto = get_object_or_404(Produtos, id=produto_id)
+    if q and produto_id and quantidade:
+        try:
+            cliente = Clientes.objects.get(id=q)
+            comanda = Comandas.objects.get(cliente=cliente, id=q)
+        except Clientes.DoesNotExist:
+            cliente = None
+            comanda = None
+        except Comandas.DoesNotExist:
+            comanda = None
 
-        if cliente and comanda and produto:
+        if cliente and comanda:
+            # Redirecionar para realizar_consumo
             return redirect(
                 "realizar_consumo",
                 cliente_id=cliente.id,
                 comanda_id=comanda.id,
-                produto_id=produto.id,
+                produto_id=produto_id,
                 quantidade=quantidade,
             )
 
+    # Cliente ou comanda inválidos, exibir mensagem de erro
+    messages.error(request, "Cliente ou comanda inválidos.")
+
+    # Redirecionar para pesquisar_comanda_consumo com mensagem de erro
     return redirect('pesquisar_comanda_consumo')
+
+
+
 
 
 def realizar_consumo(request, cliente_id, comanda_id, produto_id, quantidade):

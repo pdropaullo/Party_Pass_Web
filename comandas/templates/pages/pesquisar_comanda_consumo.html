@@ -70,17 +70,16 @@
                   name="busca_com"
                   placeholder="Pesquisar comanda"
                   value="{{ busca_com }}"
+                  required
                 />
               </div>
               <div class="produto_comanda">
                 <h2>Cód. do Produto:</h2>
-                <input
-                  type="text"
-                  class="cod_produto"
-                  name="produto_id"
-                  placeholder="Pesquisar produto"
-                  value="{{ produto_id }}"
-                />
+                <select name="produto_id" class="cod_produto" id="" required>
+                {% for produto in produtos %}
+                  <option value="{{ produto.id }}">{{produto.id}} - {{produto.nome}}</option>
+                {% endfor %}
+                </select>
               </div>
               <div class="qtd_comanda">
                 <h2>Quantidade:</h2>
@@ -89,7 +88,8 @@
                   class="quantidade"
                   name="quantidade"
                   min="1"
-                  value="{{ quantidade }}"
+                  value="{{ 1 }}"
+                  required
                 />
               </div>
               <div class="buttons">

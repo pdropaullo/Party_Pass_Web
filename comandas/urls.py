@@ -9,9 +9,9 @@ urlpatterns = [
     path('ferramentas/', views.ferramentas, name='ferramentas'),
     path('sobre/', views.sobre, name='sobre'),
     path('busca_id/', views.search, name='busca_id'),
-    path('search_id_consumo/', views.search_id_consumo, name='search_id_consumo'),
     path('pesquisar_comanda_consumo/', views.pesquisar_comanda_consumo, name='pesquisar_comanda_consumo'),
     path('cliente/<int:cliente_id>/comanda/<int:comanda_id>/produto/<int:produto_id>/consumo/<int:quantidade>/', views.realizar_consumo, name='realizar_consumo'),
+    path('search_id_consumo/', views.search_id_consumo, name='search_id_consumo'),
     path('sucesso', views.sucesso, name='sucesso')
 
 ]
