@@ -7,6 +7,16 @@
     font-family: sans-serif;
 }
 
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
 :root {
     --black: #000f08;
     --green: #1c3738;
@@ -27,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 50px;
+    height: 5rem;
     justify-content: space-evenly;
 }
 
@@ -37,7 +47,7 @@
     align-items: center;
     text-align: center;
     width: 60%;
-    height: 600px;
+    height: 60rem;
     margin: auto;
     justify-content: space-evenly
 }
@@ -51,30 +61,30 @@
 
 .radios {
     display: flex;
-    width: 400px;
+    width: 40rem;
     justify-content: space-evenly;
-    font-size: 20px;
+    font-size: 2rem;
 }
 
 .radios>input {
-    width: 15px;
+    width: 1.5rem;
 }
 
 #pesquisa {
-    width: 250px;
-    height: 30px;
-    font-size: 16px;
+    width: 25rem;
+    height: 3rem;
+    font-size: 1.6rem;
 }
 
 button {
     display: flex;
-    width: 100px;
-    height: 30px;
+    width: 10rem;
+    height: 3rem;
     align-items: center;
     justify-content: center;
     background-color: var(--green);
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
     transition: .5s;
 }
 
@@ -84,11 +94,11 @@ button:hover {
 }
 
 table {
-    width: 800px;
-    margin: 40px auto;
+    width: 80rem;
+    margin: 4rem auto;
     border-collapse: collapse;
     text-align: left;
-    border-radius: 10px 10px 0 0;
+    border-radius: 1rem 1rem 0 0;
     overflow: hidden;
 }
 
@@ -99,7 +109,7 @@ thead>tr {
 
 tr>th,
 tr>td {
-    padding: 15px 20px;
+    padding: 1.5rem 2rem;
 }
 
 tbody>tr:nth-last-of-type(even) {
@@ -133,7 +143,7 @@ tbody>tr:hover {
 .current-page {
     color: white;
     background-color: var(--green);
-    padding: 10px;
+    padding: 1rem;
 }
 
 .paginas:hover {

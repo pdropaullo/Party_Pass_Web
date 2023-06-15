@@ -12,15 +12,15 @@ from django.contrib.auth.decorators import login_required
 def cadastrar_cliente(request):
     comandas = Comandas.objects.filter(usuario_id=request.user.id).order_by("-id")
     if request.method == "POST":
-        nome = request.POST.get("Nome")
-        cpf = request.POST.get("CPF")
-        telefone = request.POST.get("Telefone")
+        nome = request.POST.get("nome")
+        cpf = request.POST.get("cpf")
+        telefone = request.POST.get("telefone")
         if telefone == "":
             return HttpResponse("O campo Telefone é obrigatório.")
-        email = request.POST.get("Email")
-        data_nascimento = request.POST.get("Data_nascimento")
-        endereco = request.POST.get("Endereço")
-        saldo = request.POST.get("Saldo")
+        email = request.POST.get("email")
+        data_nascimento = request.POST.get("data_nascimento")
+        endereco = request.POST.get("endereco")
+        saldo = request.POST.get("saldo")
         if saldo:
             saldo = float(saldo)
         else:
@@ -36,7 +36,7 @@ def cadastrar_cliente(request):
         )
 
         nova_comanda = Comandas(
-            cliente=novo_cliente, ultima_recarga=date.today(), saldo=saldo
+            cliente=novo_cliente, ultima_recarga=date.today(), saldo=saldo, usuario_id=request.user.id
         )
 
         novo_cliente.save()
@@ -56,9 +56,18 @@ def pesquisar_cliente(request):
     if busca:
         clientes = Clientes.objects.filter(
             Q(nome__icontains=busca) | Q(cpf__icontains=busca)
-        )
+        ).order_by("-id")
 
-    paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
+        for cliente in clientes:
+            comanda = Comandas.objects.filter(cliente=cliente).first()
+            if comanda:
+                cliente.saldo = comanda.saldo
+            else:
+                cliente.saldo = 0.00
+    else:
+        clientes = []
+
+    paginator = Paginator(clientes, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
@@ -67,3 +76,31 @@ def pesquisar_cliente(request):
         "pages/pesquisar_cliente.html",
         {"clientes": page_obj, "comandas": comandas},
     )
+
+    # busca = request.GET.get("pesquisar_cliente")
+    # clientes = Clientes.objects.filter().order_by("-id")
+
+    # if busca:
+    #     clientes = Clientes.objects.filter(
+    #         Q(nome__icontains=busca) | Q(cpf__icontains=busca)
+    #     )
+
+    # paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
+    # page_number = request.GET.get("page")
+    # page_obj = paginator.get_page(page_number)
+
+    # return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})
+
+    # busca = request.GET.get("pesquisar_cliente")
+    # clientes = Clientes.objects.filter().order_by("-id")
+
+    # if busca:
+    #     clientes = Clientes.objects.filter(
+    #         Q(nome__icontains=busca) | Q(cpf__icontains=busca)
+    #     )
+
+    # paginator = Paginator(clientes, 5)  # Exibe 5 registros por página
+    # page_number = request.GET.get("page")
+    # page_obj = paginator.get_page(page_number)
+
+    # return render(request, "pages/pesquisar_cliente.html", {"clientes": page_obj})

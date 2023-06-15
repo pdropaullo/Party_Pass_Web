@@ -39,7 +39,7 @@ python -m venv venv
 ```
 4. Instale as dependências:
 ```bash
-pip freeze > requirements.txt
+pip install -r requirements.txt
 ```
 5. Execute as migrações do banco de dados:
 ```bash

@@ -10,42 +10,53 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/queries.css' %}">
+    <script defer src="{% static 'js/scripts.js'%}"></script>
     <title>Ferramentas - Party Pass</title>
 </head>
 
 <body>
-    <nav>
+   <nav>
         <div class="logo">
             <a href="{% url 'home' %}"><img src="{% static 'img/logo_party_pass.png' %}" alt=""></a>
             <a href="{% url 'home' %}">Party Pass</a>
         </div>
-        <div class="menus">
-            <a href="{% url 'home' %}">INÍCIO</a>
-            <a href="{% url 'ferramentas' %}">FERRAMENTAS</a>
-            <a href="{% url 'sobre' %}">SOBRE</a>
+        <div class="main-nav">
+            <ul class="main-nav-list">
+                <li><a class="main-nav-link" href="{% url 'home' %}">INÍCIO</a></li>
+                <li><a class="main-nav-link" href="{% url 'ferramentas' %}">FERRAMENTAS</a></li>
+                <li><a class="main-nav-link" href="{% url 'sobre' %}">SOBRE</a></li>
+                <li><a class="nav-icon" href="{% url 'logout' %}"><ion-icon name="log-out-outline"></ion-icon></a></li>
+            </ul>
         </div>
-        <div class="perfil">
-            <a href="#" class="user">{{user}}</a>
-            <a class="sair" href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i></a>
-        </div>
+        <button class="btn-mobile-nav">
+            <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+            <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
     </nav>
     <main class="main_index" id="main_index">
-        <h1>Nossas Ferramentas</h1>
-        <div class="ferramentas">
+       <h1 class="ferramentas__title">Nossas Ferramentas</h1>
+        <div class="ferramentas grid grid--3-cols">
             <div class="cliente">
                 <h1>Cliente</h1>
-                <a href="{% url 'cadastrar_cliente' %}"><button>Cadastrar Cliente</button></a>
-                <a href="{% url 'pesquisar_cliente' %}"><button>Pesquisar Cliente</button></a>
+                <div class="btn__container">
+                    <a class="btn btn__ferramentas" href="{% url 'cadastrar_cliente' %}">Cadastrar Cliente</a>
+                    <a class="btn btn__ferramentas" href="{% url 'pesquisar_cliente' %}">Pesquisar Cliente</a>
+                </div>
             </div>
             <div class="produto">
                 <h1>Produto</h1>
-                <a href="{% url 'cadastrar_produtos' %}"><button>Cadastrar Produto</button></a>
-                <a href="{% url 'pesquisar_produtos' %}"><button>Pesquisar Produto</button></a>
+                <div class="btn__container">
+                    <a class="btn btn__ferramentas" href="{% url 'cadastrar_produtos' %}">Cadastrar Produto</a>
+                    <a class="btn btn__ferramentas" href="{% url 'pesquisar_produtos' %}">Pesquisar Produto</a>
+                </div>
             </div>
             <div class="comanda">
                 <h1>Comanda</h1>
-                <a href="{% url 'pesquisar_comanda' %}"><button>Recarregar Comanda</button></a>
-                <a href="{% url 'pesquisar_comanda_consumo' %}"><button>Realizar Consumo</button></a>
+                <div class="btn__container">
+                    <a class="btn btn__ferramentas" href="{% url 'pesquisar_comanda' %}">Recarregar Comanda</a>
+                    <a class="btn btn__ferramentas" href="{% url 'pesquisar_comanda_consumo' %}">Realizar Consumo</a>
+                </div>
             </div>
         </div>
     </main>
